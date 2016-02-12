@@ -1,28 +1,13 @@
-== README
+To start:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Install git and clone this repository.
 
-Things you may want to cover:
+Follow [this guide](https://gorails.com/setup/osx/10.10-yosemite) to install Rails on Mac or [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-14-04) for Linux.
 
-* Ruby version
+`cd` into this directory
 
-* System dependencies
+`bundle exec rake db:migrate` to set up your database
 
-* Configuration
+`bundle exec rails s` to start the server.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Go to [localhost](http://localhost:3000/routes) to view the application.
