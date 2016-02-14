@@ -16,6 +16,26 @@ Go to [localhost](http://localhost:3000/routes) to view the application.
 
 [Linux](http://www.olindata.com/blog/2014/07/installing-vagrant-and-virtual-box-ubuntu-1404-lts) / [Mac](http://sourabhbajaj.com/mac-setup/Vagrant/README.html).  Make sure to use "ubuntu/trusty64" as the box image instead of "precise64", "precise32", or whatever else they say.
 
+Install [Chef](https://downloads.chef.io/chef-dk/)
+
+`vagrant plugin install vagrant-berkshelf`
+
+`vagrant plugin install vagrant-omnibus`
+
+`berks install`
+
+Mac:
+
+`sudo echo '10.11.12.13 local.sendero.com' > /etc/hosts`
+
+Linux:
+
+`echo '10.11.12.13 local.sendero.com' | sudo tee --append /etc/hosts > /dev/null`
+
+`export PATH="/opt/chefdk/bin:$PATH"`
+
+Linux only: `sudo apt-get install nfs-kernel-server`
+
 `vagrant up` in the project directory.
 
 `ssh vagrant@10.11.12.13` - password is 'vagrant'

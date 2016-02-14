@@ -1,0 +1,7 @@
+name             'sendero'
+maintainer       'Michael Zemel'
+maintainer_email 'michael@masonbuilt.com'
+license          'WTFPL'
+description      'Install'
+long_description 'Cookbook to install and configure the sendero app'
+version          '0.1.0'

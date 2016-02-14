@@ -1,0 +1,90 @@
+DEPENDENCIES
+  apt
+  bluepill
+  build-essential
+  chef-sugar
+  god
+  homebrew (~> 1.9.0)
+  install_from
+  metachef
+  nginx
+  ohai
+  openssl
+  postgresql
+    git: https://github.com/hw-cookbooks/postgresql.git
+    revision: 7df755bdc1da7af4ac77e2076ed4703491cf8196
+  rbenv (~> 1.7.1)
+  redis
+  rsyslog
+  ruby_build (~> 0.8.0)
+  rubygems (~> 0.3.0)
+  runit (~> 0.16.2)
+  sendero
+    path: .
+    metadata: true
+  sendero-cookbook
+    path: cookbooks/sendero-cookbook
+  yum
+  yum-epel
+
+GRAPH
+  apache2 (3.1.0)
+  apt (2.9.2)
+  bluepill (2.4.1)
+    rsyslog (~> 2.0)
+  build-essential (2.2.4)
+  chef-sugar (3.3.0)
+  chef_handler (1.2.0)
+  dmg (2.3.0)
+  git (4.3.7)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  god (1.0.2)
+    runit (<= 0.16.2)
+  homebrew (1.9.2)
+  install_from (3.0.4)
+  metachef (3.0.4)
+  nginx (1.8.0)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    ohai (>= 1.1.4)
+    runit (>= 0.0.0)
+    yum (>= 0.0.0)
+  ohai (2.1.0)
+  openssl (4.4.0)
+    chef-sugar (>= 3.1.1)
+  postgresql (4.0.0)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0)
+  rbenv (1.7.1)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    git (>= 0.0.0)
+    ohai (>= 1.1)
+  redis (3.0.4)
+    install_from (>= 0.0.0)
+    metachef (>= 0.0.0)
+    runit (>= 0.0.0)
+  rsyslog (2.2.0)
+  ruby_build (0.8.0)
+  rubygems (0.3.0)
+  runit (0.16.2)
+  sendero (0.1.0)
+  sendero-cookbook (0.1.0)
+    apache2 (>= 0.0.0)
+    god (~> 1.0.2)
+    nginx (>= 0.0.0)
+    openssl (>= 0.0.0)
+    postgresql (~> 4.0.0)
+    rbenv (~> 1.7.1)
+    redis (~> 3.0.4)
+    ruby_build (~> 0.8.0)
+    rubygems (~> 0.3.0)
+  windows (1.39.1)
+    chef_handler (>= 0.0.0)
+  yum (3.10.0)
+  yum-epel (0.6.5)
+    yum (~> 3.2)
