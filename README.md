@@ -36,10 +36,12 @@ Linux:
 
 Linux only: `sudo apt-get install nfs-kernel-server`
 
-`vagrant up` in the project directory.
+`vagrant up` in the project directory.  This will take a while to download the box template and install all the programs.
 
 `ssh vagrant@10.11.12.13` - password is 'vagrant'
 
 `nano ~/.ssh/authorized_keys` and add your public key (found in ~/.ssh/id_rsa.pub in your host computer).  If you don't have a public key, [create one](https://help.github.com/articles/generating-a-new-ssh-key/).  Save the file and exit.  You should now be able to ssh into the machine with `vagrant ssh` and not have to use a password.
 
-Currently only the code has been copied.  I still need to add Chef and some cookbooks to provision the virtual machine and start the application.
+`vagrant ssh`
+
+`bundle exec rails s` - This will start the server and you can access the application [locally](http://local.sendero.com)
