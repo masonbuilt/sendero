@@ -96,6 +96,13 @@ template "/home/vagrant/.ssh/config" do
   action :create
 end
 
+##########
+# NodeJS #
+##########
+package 'nodejs' do
+  action :install
+end
+
 #####################
 # Rest of the stuff #
 #####################
