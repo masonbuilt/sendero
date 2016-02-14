@@ -10,6 +10,10 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.omnibus.chef_version = :latest
+  config.berkshelf.enabled = true
+  config.ssh.forward_agent = true
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
@@ -68,6 +72,35 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = ["cookbooks", "~/.berkshelf/cookbooks"]
+    chef.json = { 
+      "postgresql" => {
+        "password" => {
+          "postgres" => "050a7eac113a490ae395bf8186c941c6" # MD5 hash of the production password; might replace with 'password' hashed
+        },
+        "config" => {
+          "port" => 5432
+        },
+        "pg_hba" => [
+          {:comment => '# Optional comment', :type => 'local', :db => 'all', :user => 'postgres', :addr => nil, :method => 'trust'}
+        ]
+      },
+      "database" => {
+        "create" => ["sendero_dev"]
+      },
+      "build_essential" => {
+        "compile_time" => true
+      },
+      "nginx" => {
+        "default_site_enabled" => false
+      }
+    }
+    chef.run_list = [
+      "recipe[sendero-cookbook::default]"
+    ]
+  end
 
   config.ssh.username = 'vagrant'
   config.ssh.password = 'vagrant'
