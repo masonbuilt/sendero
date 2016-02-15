@@ -26,7 +26,7 @@ Install [Chef](https://downloads.chef.io/chef-dk/)
 
 Mac:
 
-`sudo echo '10.11.12.13 local.sendero.com' > /etc/hosts`
+`sudo echo '10.11.12.13 local.sendero.com' >> /etc/hosts`
 
 Linux:
 
