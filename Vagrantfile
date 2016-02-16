@@ -74,7 +74,7 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = ["cookbooks", "~/.berkshelf/cookbooks"]
+    chef.cookbooks_path = ["~/Sites/chef-repo/cookbooks", "~/.berkshelf/cookbooks"]
     chef.json = { 
       "postgresql" => {
         "password" => {
@@ -98,7 +98,7 @@ Vagrant.configure(2) do |config|
       }
     }
     chef.run_list = [
-      "recipe[sendero-cookbook::default]"
+      "recipe[masonbuilt-vagrant::default]"
     ]
   end
 

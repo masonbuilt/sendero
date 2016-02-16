@@ -6,6 +6,8 @@ DEPENDENCIES
   god
   homebrew (~> 1.9.0)
   install_from
+  masonbuilt-vagrant
+    path: cookbooks/masonbuilt-vagrant
   metachef
   nginx
   ohai
@@ -22,8 +24,6 @@ DEPENDENCIES
   sendero
     path: .
     metadata: true
-  sendero-cookbook
-    path: cookbooks/sendero-cookbook
   yum
   yum-epel
 
@@ -45,6 +45,15 @@ GRAPH
     runit (<= 0.16.2)
   homebrew (1.9.2)
   install_from (3.0.4)
+  masonbuilt-vagrant (0.1.0)
+    apache2 (>= 0.0.0)
+    god (~> 1.0.2)
+    nginx (>= 0.0.0)
+    openssl (>= 0.0.0)
+    postgresql (~> 4.0.0)
+    rbenv (~> 1.7.1)
+    ruby_build (~> 0.8.0)
+    rubygems (~> 0.3.0)
   metachef (3.0.4)
   nginx (1.8.0)
     apt (>= 0.0.0)
@@ -73,16 +82,6 @@ GRAPH
   rubygems (0.3.0)
   runit (0.16.2)
   sendero (0.1.0)
-  sendero-cookbook (0.1.0)
-    apache2 (>= 0.0.0)
-    god (~> 1.0.2)
-    nginx (>= 0.0.0)
-    openssl (>= 0.0.0)
-    postgresql (~> 4.0.0)
-    rbenv (~> 1.7.1)
-    redis (~> 3.0.4)
-    ruby_build (~> 0.8.0)
-    rubygems (~> 0.3.0)
   windows (1.39.1)
     chef_handler (>= 0.0.0)
   yum (3.10.0)
