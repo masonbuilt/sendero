@@ -10,6 +10,7 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
+    @grade = @route.grade
   end
 
   # GET /routes/new
@@ -69,6 +70,6 @@ class RoutesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:name)
+      params.require(:route).permit(:name, :grade_id)
     end
 end
