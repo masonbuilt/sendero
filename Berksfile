@@ -23,4 +23,4 @@ cookbook 'runit', '~> 0.16.2'
 cookbook 'yum'
 cookbook 'yum-epel'
 
-cookbook "sendero-cookbook",  path: "./cookbooks/sendero-cookbook"
+cookbook "masonbuilt-vagrant",  path: "./cookbooks/masonbuilt-vagrant"

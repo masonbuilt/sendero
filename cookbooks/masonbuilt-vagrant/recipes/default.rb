@@ -72,11 +72,11 @@ end
 #########
 # Redis #
 #########
-package 'redis-server' do
-  action :install
-end
-include_recipe 'redis'
-package 'redis-tools'
+# package 'redis-server' do
+#   action :install
+# end
+# include_recipe 'redis'
+# package 'redis-tools'
 
 ###########
 # Unicorn #

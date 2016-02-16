@@ -1,17 +1,35 @@
+# require 'capistrano/ext/multistage'
+# require "bundler/capistrano"
+# require "rvm/capistrano"
+
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+set :stages, %w(production staging virtual_machine)
+set :default_stage, "production"	
+
 set :application, 'sendero'
 set :repo_url, 'git@github.com.com:masonbuilt/sendero.git'
+set :branch, "master"
+
+set :user, "deploy"
+set :use_sudo, false
+
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, '/var/www/sendero/current'
 
 # Default value for :scm is :git
-# set :scm, :git
+set :scm, :git
+
+set :deploy_config_path, `pwd` + "/config/deploy.rb"
+set :current_path, "/var/www/sendero/current"
+set :shared_path, "/var/www/sendero/shared"
+
+# ssh_options[:forward_agent] = true
 
 # Default value for :format is :pretty
 # set :format, :pretty
