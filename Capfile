@@ -23,6 +23,12 @@ require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 # require 'capistrano/passenger'
 
+require 'sshkit/sudo'
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
-Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+Dir.glob('lib/capistrano/tasks/*').each { |r| import r }
+Dir.glob('lib/capistrano/*.rb').each { |r| import r }
 Dir.glob('lib/capistrano/**/*.rb').each { |r| import r }
+
+require_relative 'lib/capistrano/template.rb'
+require_relative 'lib/capistrano/substitute_strings.rb'
