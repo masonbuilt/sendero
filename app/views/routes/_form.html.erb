@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_area :name %>
+    <%= f.text_area :name %><br>
+    <%= f.collection_select(:grade_id, Grade.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

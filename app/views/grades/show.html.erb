@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @grade.name %>
+</p>
+
+<strong>Routes:</strong>
+<table>
+<tr><th></th></tr>
+<% @routes.each do |route| %>
+	<tr><td><%= link_to route.name, route %></td></tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_grade_path(@grade) %> |
+<%= link_to 'Back', grades_path %>

@@ -5,5 +5,9 @@
   <%= @route.name %>
 </p>
 
+<% if @grade %>
+	<p><strong>Grade: <%= link_to @grade.name, @grade %></strong></p>
+<% end %>
+
 <%= link_to 'Edit', edit_route_path(@route) %> |
 <%= link_to 'Back', routes_path %>
