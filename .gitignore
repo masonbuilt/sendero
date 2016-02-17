@@ -21,3 +21,5 @@ app/assets/styleguide/
 
 /.vagrant
 *.pem
+
+config/secrets.yml
