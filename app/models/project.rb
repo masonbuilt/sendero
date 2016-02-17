@@ -1,4 +1,4 @@
 class Project < ActiveRecord::Base
-	# belongs_to :user, class: User
-	belongs_to :route, class: Route
+	belongs_to :user
+	belongs_to :route
 end
