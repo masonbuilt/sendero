@@ -1,0 +1,32 @@
+{
+  "name": "Sendero",
+  "description": "An app for tracking climbs",
+  "main": "gulpfile.js",
+  "authors": [
+    "Jason Swetzoff",
+    "Michael Zemel"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Sass",
+    "Gulp"
+  ],
+  "homepage": "https://github.com/Jaswetz/gulp-starter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "compass-breakpoint": "breakpoint-sass#^2.6.1",
+    "normalize-strings": "normalize#^1.0.4",
+    "normalize-scss": "^3.0.3",
+    "waypoints": "^4.0.0"
+  },
+  "dependencies": {
+    "waypoints": "^4.0.0"
+  }
+}
