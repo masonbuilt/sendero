@@ -36,6 +36,8 @@ gem 'capistrano-rbenv', "~> 2.0"
 gem 'capistrano-ext'
 gem 'sshkit-sudo'
 
+gem 'devise'
+
 gem 'pry'
 
 group :development, :test do
