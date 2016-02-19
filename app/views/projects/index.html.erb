@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Route</th>
+      <th>Grade</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,9 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.user_id %></td>
-        <td><%= project.route_id %></td>
+        <td><%= project.route.name %></td>
+        <td><%= project.grade.name %></td>
+        <td><%= project.status %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
