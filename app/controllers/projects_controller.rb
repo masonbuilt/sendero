@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:index, :show]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects.includes(route: [:grade]).all
   end
 
   # GET /projects/1
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_url, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -67,8 +68,15 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
+    def require_user
+      if current_user.nil?
+        flash[:notice] = "You must be logged in to view this page"
+        redirect_to root_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:user_id, :route_id)
+      params.require(:project).permit(:user_id, :route_id, :status)
     end
 end

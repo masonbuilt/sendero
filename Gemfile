@@ -37,6 +37,7 @@ gem 'capistrano-ext'
 gem 'sshkit-sudo'
 
 gem 'devise'
+gem 'state_machine'
 
 gem 'pry'
 
