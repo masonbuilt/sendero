@@ -2,11 +2,6 @@
 //
 // This file contains global variables
 
-// Grid
-
-$global-width: rem-calc(1200);
-$grid-column-count: 12;
-
 // Wireframe
 
 $wireframe: false;
@@ -19,55 +14,16 @@ $large: 1024px;
 $xlarge: 1200px;
 $xxlarge: 1440px;
 
-// Font Stacks
-
-$font-family--primary: "Istok Web", "Helvetica Neu", Helvetica, Arial, sans-serif;
-$font-family--secondary: "Ubuntu", "Helvetica Neu", Helvetica, Arial, sans-serif;
-
-// Font Size
-// http://www.modularscale.com/?1&rem&1.333&sass&table
-
-$font-size--small: 0.75rem;  // small text
-$font-size--normal: 1rem;      // body text
-$font-size--big: 1.333rem;  // large text
-$font-size--large: 1.777rem;   // main heading
-$font-size--xlarge: 2.369rem;   // main heading
-$font-size--xxlarge: 3.157rem;   // main heading
-$font-size--xxxlarge: 4.209rem;   // main heading
-
-// Font Weights
-
-$font-weight--thin: 100;
-$font-weight--light: 300;
-$font-weight--medium: 400;
-$font-weight--bold: 700;
-$font-weight--ultra-bold: 900;
-
-// Text
-
-$base__font-size: $font-size--normal;
-$base__line-height: 1.5;
-$base__font-weight: $font-weight--medium;
-
-// Headings
-
-$base__font-family--heading: $font-family--secondary;
-$base__font-weight--heading: $font-weight--bold;
-$base__line-height--heading: $base__line-height / 1.4;
-
-// Spacing
-
-$rem: rem;
-$spacing: $base__line-height + 0rem;
-$spacing--small: $spacing / 2;
-
 // Descrpitive Base Colors
 
+$color--black: #222222;
+$color--grey--dark: #444444;
+$color--grey--mid: #777777;
+$color--grey: #cccccc;
+$color--grey--light: #ececec;
+$color--silver: #f4f4f4;
 $color--white: #ffffff;
-$color--black: #0b0b0b;
-$color--grey--dark: #4b4b4b;
-$color--grey: #b1b1b1;
-$color--grey--light: #e4e4e4;
+$color--accent: tomato;
 $color--blue: #3372df;
 $color--teal: #33afdf;
 $color--green: #0f9d58;
@@ -77,11 +33,8 @@ $color--yellow: #f4b400;
 
 // Theme Colors
 
-$color--theme-primary: #454DE1;
-$color--theme-secondary: #812AE1;
-$color--theme-dark: #1C1C36;
-$color--theme-highlight: #1B82D7;
-$color--theme-light: #FCFCFC;
+$color--theme-primary: $color--blue;
+$color--theme-secondary: $color--teal;
 
 // UI Colors
 
@@ -93,6 +46,33 @@ $ui-colors: (
     info: $color--purple
 );
 
+// Font Stacks
+
+$font-family--mono: Monaco, Consolas, monospace;
+$font-family--primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// Font Weights
+
+$font-weight--thin: 100;
+$font-weight--medium: 400;
+$font-weight--bold: 700;
+
+// Base Text
+$scale: 1.414;
+$base__font-size: 18;
+$base__line-height: 1.5;
+$base__font-weight: $font-weight--medium;
+$base__leading: $base__line-height * 1rem;
+$spacing--large: $base__leading;
+$spacing: $base__leading / 2;
+$spacing--small: $base__leading / 4;
+
+// Headings
+
+$base__font-family--heading: $font-family--primary;
+$base__font-weight--heading: $font-weight--medium;
+$base__font-color--heading: $color--grey--dark;
+
 // Border
 
 $border__radius: .1rem;
@@ -100,38 +80,30 @@ $border--width: .1rem;
 $border--color: $color--white;
 $border--style: solid;
 
-// Table
-
-$table__border--width: .1rem;
-$table__border--color: $color--white;
-$table__border--style: solid;
-
 // Forms
 
 $forms__border--width: .1rem;
 $forms__border--color: $color--white;
 $forms__border--style: solid;
-
 $forms__border--color--focus: $color--white;
 
 // Blockquote
 
-$blockquote__border--width: .1rem;
-$blockquote__border--color: $color--grey;
+$blockquote__border--width: .4rem;
+$blockquote__border--color: $color--grey--light;
 $blockquote__border--style: solid;
-$blockquote__background: $color--grey;
+$blockquote__background: $color--white;
 
 // Button
 
 $btn__border-width: .1rem;
-$btn__font-stack: $font-family--secondary;
+$btn__font-stack: $font-family--primary;
 $btn__color: rgba($color--white, .1);
 $btn__border-color: $color--white;
 $btn__border-color--hover:  $color--white;
 $btn__font-color: $color--white;
 $btn__font-color--hover: $color--white;
 $btn__color--hover: rgba($color--white, .2);
-
 
 // Path to Assets
 

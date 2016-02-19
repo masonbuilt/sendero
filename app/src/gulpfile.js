@@ -135,6 +135,7 @@ gulp.task('styleguide:generate', function() {
     .pipe(styleguide.generate({
         title: 'My Styleguide',
         server: true,
+        disableEncapsulation: true,
         port: 5000,
         rootPath: outputPathStyleguide,
         overviewPath: 'README.md'

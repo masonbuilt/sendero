@@ -1,0 +1,27 @@
+// Base Styles
+//
+// This file contains the <body> and <html> styles
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    min-height: 100%;
+}
+
+svg {
+    max-height: 100%;
+}
+
+img {
+    height: auto;
+    max-width: 100%
+}
