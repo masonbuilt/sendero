@@ -19,7 +19,21 @@
         <td><%= project.grade.name %></td>
         <td><%= project.status %></td>
         <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <% if project.active? %>
+          <td><%= link_to 'Complete', project_path(
+                    project.id, project: {
+                      id: project.id,
+                      status: "complete"
+                    }),
+                  method: :put %></td>
+        <% else %>
+          <td><%= link_to 'Uncomplete', project_path(
+                    project.id, project: {
+                      id: project.id,
+                      status: "active"
+                    }),
+                  method: :put %></td>
+        <% end %>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -5,19 +5,19 @@ class Project < ActiveRecord::Base
   validates_presence_of :user_id
 
   scope :active,    ->() { where(status: "active") }
-  scope :completed, ->() { where(status: "completed") }
+  scope :complete, ->() { where(status: "complete") }
 
   state_machine :status, initial: :active do
 
     state :active, value: "active"
-    state :completed, value: "completed"
+    state :complete, value: "complete"
 
     event :complete do 
-      transition active: :completed
+      transition active: :complete
     end
 
     event :uncomplete do
-      transition completed: :active
+      transition complete: :active
     end
 
   end
