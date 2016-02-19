@@ -1,0 +1,10 @@
+defaults:
+  gmail_address: "michael@masonbuilt.com"
+  gmail_password: ""
+  twitter_account: "masonbuilt"
+  twitter_password:
+  amazon_account: "michael@masonbuilt.com"
+  amazon_password: ""
+  amazon_bucket: ""
+  amazon_access_key_id: ""
+  amazon_secret_access_key: ""
