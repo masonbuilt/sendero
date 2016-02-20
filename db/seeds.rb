@@ -27,3 +27,9 @@ project = Project.create(
 	route: route,
 	user: user
 	)
+
+comment = Comment.create(
+	user: user,
+	route: route,
+	body: "This is such a good route"
+	)
