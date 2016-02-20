@@ -12,14 +12,15 @@ user = User.create(
 	password_confirmation: "password"
 	)
 
-grade = Grade.create(
-	name: "V1",
-	value: 1,
-	)
+(1..15).each do |i|
+	Grade.create(
+		name: "V#{i}",
+		value: i,
+		)
 
 route = Route.create(
 	name: "Slippery Crack",
-	grade: grade
+	grade: Grade.first
 	)
 
 project = Project.create(
