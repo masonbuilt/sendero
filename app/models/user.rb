@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :projects
   has_many :comments
+  has_many :routes, foreign_key: "owner_id"
 
   validates_presence_of :first_name
   validates_presence_of :last_name
