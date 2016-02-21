@@ -1,5 +1,6 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
 
   # GET /routes
   # GET /routes.json
@@ -10,6 +11,7 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
+    @projects = @route.projects
     @grade    = @route.grade
     @comments = @route.comments
   end
@@ -69,8 +71,15 @@ class RoutesController < ApplicationController
       @route = Route.find(params[:id])
     end
 
+    def require_user
+      if current_user.nil?
+        flash[:notice] = "You must be logged in to view this page"
+        redirect_to routes_path
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def route_params
-      params.require(:route).permit(:name, :grade_id)
+      params.require(:route).permit(:name, :grade_id, :owner_id, :info)
     end
 end
