@@ -11,12 +11,16 @@
 		<th></th>
 		<th></th>
 		<th></th>
+		<th></th>
 	</tr>
 	<% @comments.each do |comment| %>
 		<tr>
 			<td><%= comment.user.email %></td>
 			<td><%= comment.body %></td>
 			<td><%= comment.created_at %></td>
+			<% if current_user == comment.user %>
+				<td><%= link_to "Delete", route_comment_path(@route, comment, user_id: current_user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
