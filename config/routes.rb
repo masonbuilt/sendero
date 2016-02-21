@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   get "users/:user_id/comments" => "users/comments#index", as: "user_comments"
+  delete "users/:user_id/comment/:id" => "users/comments#destroy", as: "destroy_user_comment"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

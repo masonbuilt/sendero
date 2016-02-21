@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
 	before_action :set_route
+  before_action :set_comment, only: :destroy
+  before_action :require_user_is_owner, only: :destroy
 
   def index
     @comments = @route.comments
@@ -25,6 +27,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to @route, notice: 'Comment has been removed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def comment_params
@@ -40,5 +50,16 @@ class CommentsController < ApplicationController
 
   def set_route
   	@route = Route.find(params[:route_id])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def require_user_is_owner
+    if @comment.user.id != params[:user_id].to_i
+      flash[:notice] = "You are not authorized to perform this action"
+      redirect_to root_path
+    end
   end
 end
