@@ -18,7 +18,7 @@
 	</tr>
 	<% @projects.each do |project| %>
 		<tr>
-			<td><%= link_to project.user.email, project %></td>
+			<td><%= link_to project.user.name, project %></td>
 			<td><%= project.created_at %></td>
 			<td><%= project.status %></td>
 		</tr>
@@ -36,7 +36,7 @@
 	</tr>
 	<% @comments.each do |comment| %>
 		<tr>
-			<td><%= comment.user.email %></td>
+			<td><%= comment.user.name %></td>
 			<td><%= comment.body %></td>
 			<td><%= comment.created_at %></td>
 			<% if current_user == comment.user %>
