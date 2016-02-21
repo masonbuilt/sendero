@@ -8,12 +8,18 @@
 
 user = User.create(
 	email: "test@example.com",
+	first_name: "Mark",
+	last_name: "Smith",
+	age: 22,
 	password: "password",
 	password_confirmation: "password"
 	)
 
 user_second = User.create(
 	email: "foo@bar.com",
+	first_name: "Bob",
+	last_name: "Jones",
+	age: 47,
 	password: "password",
 	password_confirmation: "password"
 	)

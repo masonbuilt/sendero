@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @user.email %>
+  <%= @user.name %>
 </p>
 
 <p>
@@ -13,6 +13,11 @@
 <p>
 	<strong>Info:</strong>
 	<%= @route.info %>
+</p>
+
+<p>
+	<strong>Status:</strong>
+	<%= @project.status %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
