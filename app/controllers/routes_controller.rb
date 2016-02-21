@@ -1,6 +1,7 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
+  before_action :require_user_is_owner, except: [:index, :show]
 
   # GET /routes
   # GET /routes.json
@@ -66,20 +67,27 @@ class RoutesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_route
-      @route = Route.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_route
+    @route = Route.find(params[:id])
+  end
 
-    def require_user
-      if current_user.nil?
-        flash[:notice] = "You must be logged in to view this page"
-        redirect_to routes_path
-      end
+  def require_user
+    if current_user.nil?
+      flash[:notice] = "You must be logged in to view this page"
+      redirect_to routes_path
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def route_params
-      params.require(:route).permit(:name, :grade_id, :owner_id, :info)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def route_params
+    params.require(:route).permit(:name, :grade_id, :owner_id, :info)
+  end
+
+  def require_user_is_owner
+    if current_user != @route.owner
+      flash[:notice] = "You are not authorized to perform this action"
+      redirect_to routes_path
     end
+  end
 end
