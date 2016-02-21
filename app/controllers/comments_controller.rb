@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
 	before_action :set_route
   before_action :set_comment, only: :destroy
+  before_action :require_user, except: [:index, :show]
   before_action :require_user_is_owner, only: :destroy
 
   def index

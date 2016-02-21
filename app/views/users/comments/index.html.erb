@@ -18,7 +18,9 @@
         <td><%= comment.body %></td>
         <td><%= link_to comment.route.name, comment.route %>
         <td><%= comment.created_at %></td>
-        <td><%= link_to "Delete", destroy_user_comment_path(current_user, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user == comment.user %>
+          <td><%= link_to "Delete", destroy_user_comment_path(current_user, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
