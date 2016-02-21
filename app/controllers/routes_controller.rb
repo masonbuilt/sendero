@@ -11,6 +11,7 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
+    @projects = @route.projects
     @grade    = @route.grade
     @comments = @route.comments
   end

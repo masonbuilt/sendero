@@ -15,8 +15,8 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.route.name %></td>
-        <td><%= project.grade.name %></td>
+        <td><%= link_to project.route.name, project.route %></td>
+        <td><%= link_to project.grade.name, project.grade %></td>
         <td><%= project.status %></td>
         <td><%= link_to 'Show', project %></td>
         <% if project.active? %>

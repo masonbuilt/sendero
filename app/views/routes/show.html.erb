@@ -8,7 +8,24 @@
 
 <p><strong>Info: </strong><%= @route.info %></p>
 
-<h4>Comments:</h4>
+<h3>People projecting this route:</h3>
+
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<% @projects.each do |project| %>
+		<tr>
+			<td><%= link_to project.user.email, project %></td>
+			<td><%= project.created_at %></td>
+			<td><%= project.status %></td>
+		</tr>
+	<% end %>
+</table>
+
+<h3>Comments:</h3>
 
 <table>
 	<tr>
