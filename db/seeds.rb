@@ -21,7 +21,8 @@ end
 
 route = Route.create(
 	name: "Slippery Crack",
-	grade: Grade.first
+	grade: Grade.first,
+	owner: user
 	)
 
 project = Project.create(

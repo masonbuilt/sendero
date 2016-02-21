@@ -4,6 +4,10 @@
   <strong><%= @route.name %></strong> (<%= link_to @grade.name, @grade %>)
 </p>
 
+<p><strong>Created by: </strong><%= @route.owner.email %></p>
+
+<p><strong>Info: </strong><%= @route.info %></p>
+
 <h4>Comments:</h4>
 
 <table>
