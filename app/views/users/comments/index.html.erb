@@ -8,6 +8,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td><%= comment.body %></td>
         <td><%= link_to comment.route.name, comment.route %>
         <td><%= comment.created_at %></td>
+        <td><%= link_to "Delete", destroy_user_comment_path(current_user, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
