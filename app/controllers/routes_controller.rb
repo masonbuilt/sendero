@@ -10,7 +10,8 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
-    @grade = @route.grade
+    @grade    = @route.grade
+    @comments = @route.comments
   end
 
   # GET /routes/new

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :projects
   resources :grades
-  resources :routes
+  resources :routes do
+    resources :comments
+  end
 
-  get "user/:id/comments" => "comments#index", as: "user_comments"
+  get "users/:user_id/comments" => "users/comments#index", as: "user_comments"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
