@@ -17,6 +17,7 @@ user = User.create(
 		name: "V#{i}",
 		value: i,
 		)
+end
 
 route = Route.create(
 	name: "Slippery Crack",
