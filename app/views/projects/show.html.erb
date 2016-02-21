@@ -10,5 +10,10 @@
   <%= link_to @route.name, @route %> (<%= link_to @grade.name, @grade %>)
 </p>
 
+<p>
+	<strong>Info:</strong>
+	<%= @route.info %>
+</p>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
