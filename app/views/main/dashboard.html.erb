@@ -1,8 +1,64 @@
 <p id="notice"><%= notice %></p>
 
 <% if current_user %>
-	<h3><%= "Welcome, #{current_user.name}" %></h3>
-	<%= link_to "My Projects", projects_path %> | 
-	<%= link_to "My Comments", user_comments_path(current_user.id) %> | 
-  	<%= link_to "All Routes", routes_path %>
+    <h3><%= "Welcome, #{current_user.name}" %></h3>
+    <h3>My Routes</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+            <th></th>
+        </tr>
+        <% @routes.each do |route| %>
+            <tr>
+                <td><%= link_to route.name, route %></td>
+                <td><%= link_to route.grade.name, route.grade %></td>
+                <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             </tr>
+        <% end %>
+    </table>
+    <p><%= link_to "All routes", routes_path %></p>
+
+    <h3>My Projects</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Grade</th>
+          <th>Status</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.route.name, project %></td>
+            <td><%= link_to project.grade.name, project.grade %></td>
+            <td><%= project.status %></td>
+            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p><%= link_to "All projects", projects_path %></p>
+
+    <h3>My Comments</h3>
+    <table>
+        <tr>
+            <th>Body</th>
+            <th>Route</th>
+            <th></th>
+        </tr>
+        <% @comments.each do |comment| %>
+            <tr>
+                <td><%= comment.body.truncate(30) %></td>
+                <td><%= link_to comment.route.name, comment.route %></td>
+                <td><%= link_to 'Destroy', destroy_user_comment_path(current_user, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+             </tr>
+        <% end %>
+    </table>
+    <p><%= link_to "All comments", user_comments_path(current_user) %></p>
+    
 <% end %>
