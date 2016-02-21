@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @project.user_id %>
+  <%= @user.email %>
 </p>
 
 <p>
   <strong>Route:</strong>
-  <%= @project.route_id %>
+  <%= link_to @route.name, @route %> (<%= link_to @grade.name, @grade %>)
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

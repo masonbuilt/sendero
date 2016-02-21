@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :require_user, only: [:index, :show]
+  before_action :require_user_is_owner, only: [:edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
@@ -11,6 +12,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @user = @project.user
+    @route = @project.route
+    @grade = @route.grade
   end
 
   # GET /projects/new
@@ -72,6 +76,13 @@ class ProjectsController < ApplicationController
       if current_user.nil?
         flash[:notice] = "You must be logged in to view this page"
         redirect_to root_path
+      end
+    end
+
+    def require_user_is_owner
+      if current_user != @project.user
+        flash[:notice] = "You are not authorized to perform this action"
+        redirect_to projects_path
       end
     end
 
