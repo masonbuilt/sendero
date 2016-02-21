@@ -9,7 +9,7 @@
             <th>Grade</th>
             <th></th>
         </tr>
-        <% @routes.each do |route| %>
+        <% current_user.routes.limit(5).each do |route| %>
             <tr>
                 <td><%= link_to route.name, route %></td>
                 <td><%= link_to route.grade.name, route.grade %></td>
@@ -32,7 +32,7 @@
       </thead>
 
       <tbody>
-        <% @projects.each do |project| %>
+        <% current_user.projects.limit(5).each do |project| %>
           <tr>
             <td><%= link_to project.route.name, project %></td>
             <td><%= link_to project.grade.name, project.grade %></td>
@@ -51,7 +51,7 @@
             <th>Route</th>
             <th></th>
         </tr>
-        <% @comments.each do |comment| %>
+        <% current_user.comments.limit(5).each do |comment| %>
             <tr>
                 <td><%= comment.body.truncate(30) %></td>
                 <td><%= link_to comment.route.name, comment.route %></td>
