@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @user.name %></h3>
+<p>Age: <%= @user.age %></p>
+<p>Email: <%= link_to @user.email, "mailto:#{@user.email}" %></p>
+
+<h3><%= @user.first_name %>'s Routes</h3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Grade</th>
+        <th></th>
+    </tr>
+    <% @user.routes.limit(5).each do |route| %>
+        <tr>
+            <td><%= link_to route.name, route %></td>
+            <td><%= link_to route.grade.name, route.grade %></td>
+            <% if current_user == @user %>
+              <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+         </tr>
+    <% end %>
+</table>
+<p>
+  <%= link_to "See more", user_routes_path(@user) %> | 
+  <%= link_to "All routes", routes_path %>
+</p>
+
+<h3><%= @user.first_name %>'s Projects</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route</th>
+      <th>Grade</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.projects.limit(5).each do |project| %>
+      <tr>
+        <td><%= link_to project.route.name, project %></td>
+        <td><%= link_to project.grade.name, project.grade %></td>
+        <td><%= project.status %></td>
+        <% if current_user == @user %>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= link_to "See more", projects_path %></p>
+
+<h3><%= @user.first_name %>'s Comments</h3>
+<table>
+    <tr>
+        <th>Body</th>
+        <th>Route</th>
+        <th></th>
+    </tr>
+    <% @user.comments.limit(5).each do |comment| %>
+        <tr>
+            <td><%= comment.body.truncate(30) %></td>
+            <td><%= link_to comment.route.name, comment.route %></td>
+            <% if current_user == @user %>
+                <td><%= link_to 'Destroy', destroy_user_comment_path(@user, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+         </tr>
+    <% end %>
+</table>
+<p><%= link_to "See more", user_comments_path(@user) %></p>
+

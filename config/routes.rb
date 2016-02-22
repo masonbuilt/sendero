@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get "users/:id" => "users#show", as: "user"
   get "users/:user_id/comments" => "users/comments#index", as: "user_comments"
   delete "users/:user_id/comment/:id" => "users/comments#destroy", as: "destroy_user_comment"
 
