@@ -39,6 +39,7 @@ gem 'sshkit-sudo'
 gem 'devise'
 gem 'state_machine'
 gem 'configreader'
+gem 'pg'
 
 gem 'pry'
 

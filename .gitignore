@@ -24,3 +24,4 @@ app/assets/styleguide/
 
 config/secrets.yml
 config/site_production.yml
+config/database.yml
