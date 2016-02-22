@@ -51,7 +51,7 @@
     <% end %>
   </tbody>
 </table>
-<p><%= link_to "See more", projects_path %></p>
+<p><%= link_to "See more", user_projects_path(@user) %></p>
 
 <h3><%= @user.first_name %>'s Comments</h3>
 <table>
