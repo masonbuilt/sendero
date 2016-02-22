@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get "users/:user_id/routes" => "users/routes#index", as: "user_routes"
   delete "users/:user_id/route/:id" => "users/routes#destroy", as: "destroy_user_route"
 
+  get "users/:user_id/projects" => "users/projects#index", as: "user_projects"
+  delete "users/:user_id/project/:id" => "users/projects#destroy", as: "destroy_user_project"
   
 
   # The priority is based upon order of creation: first created -> highest priority.

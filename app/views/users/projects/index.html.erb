@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @user.first_name %>'s Projects</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.route.name, project %></td>
+        <td><%= link_to project.route.grade.name, project.route.grade %></td>
+        <td><%= project.status %></td>
+        <% if current_user == project.user %>
+          <td><%= link_to "Delete", destroy_user_project_path(current_user, project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
