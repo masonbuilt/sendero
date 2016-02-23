@@ -1,7 +1,7 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
-  before_action :require_user_is_owner, except: [:index, :show]
+  before_action :require_user_is_owner, except: [:index, :show, :new]
 
   # GET /routes
   # GET /routes.json
