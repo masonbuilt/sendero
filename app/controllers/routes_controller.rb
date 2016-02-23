@@ -9,7 +9,7 @@ class RoutesController < ApplicationController
     @routes = Route.all.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
       format.html
-      format.json { render json: @routes }
+      format.json { render json: @routes, root: false }
     end
   end
 

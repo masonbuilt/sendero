@@ -1,11 +1,35 @@
 var RouteList = React.createClass({
 
+  getInitialState: function() {
+    return {data: []};
+  },
+
   handleRouteSubmit: function(route) {
     $.ajax({
-      url: "/routes",
+      url: this.props.url,
       dataType: 'json',
       type: 'POST',
       data: {route: route},
+      success: function(data) {
+        this.setState({data: data});
+        this.componentDidMount();
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  componentDidMount: function() {
+    this.loadRoutesFromServer();
+    setInterval(this.loadRoutesFromServer, this.props.pollInterval);
+  },
+
+  loadRoutesFromServer: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
       success: function(data) {
         this.setState({data: data});
       }.bind(this),
@@ -17,7 +41,7 @@ var RouteList = React.createClass({
 
   render: function() {
 
-    var routeListItems = this.props.data.map(function(route) {
+    var routeListItems = this.state.data.map(function(route) {
       return (
         <RouteListItem info={route.info} key={route.id} name={route.name} id={route.id} ownerId={route.owner_id} grade={route.grade} />
       );

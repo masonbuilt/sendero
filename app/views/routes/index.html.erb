@@ -1,7 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<%= react_component 'RouteList', data: @routes %>
+<%= react_component 'RouteList', url: "/routes", pollInterval: 2000 %>
 
-<br>
-
-<%= link_to 'New Route', new_route_path %>
