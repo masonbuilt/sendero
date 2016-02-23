@@ -6,10 +6,10 @@ class RoutesController < ApplicationController
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.all
+    @routes = Route.all.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
       format.html
-      format.json { render json: @routes, each_serializer: PartialRouteSerializer }
+      format.json { render json: @routes }
     end
   end
 
