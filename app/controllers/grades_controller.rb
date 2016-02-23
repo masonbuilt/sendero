@@ -7,7 +7,7 @@ class GradesController < ApplicationController
     @grades = Grade.all
     respond_to do |format|
       format.html
-      format.json { render json: @grades }
+      format.json { render json: @grades, each_serializer: PartialGradeSerializer }
     end
   end
 
