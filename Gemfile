@@ -47,6 +47,7 @@ gem 'pg'
 gem 'react-rails', '~> 1.6.0'
 gem 'execjs'
 gem 'node'
+gem 'active_model_serializers'
 
 gem 'pry'
 

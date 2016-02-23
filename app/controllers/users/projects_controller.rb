@@ -3,7 +3,11 @@ class Users::ProjectsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @projects = @user.projects
+    @projects = @user.projects.includes(route: [:grade]).all
+    respond_to do |format|
+      format.html
+      format.json { render json: @projects, each_serializer: PartialProjectSerializer }
+    end
   end
 
   def destroy

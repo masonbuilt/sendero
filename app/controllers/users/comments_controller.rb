@@ -5,6 +5,10 @@ class Users::CommentsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @comments = @user.comments.includes(:route).all
+    respond_to do |format|
+      format.html
+      format.json { render json: @comments }
+    end
   end
 
   def destroy
