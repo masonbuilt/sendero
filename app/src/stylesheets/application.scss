@@ -4,16 +4,15 @@
 
 @charset 'utf-8';
 
-
-//
-// // Utils
+// Utils
 @import "1-utilities/reset";
 @import "1-utilities/config";
 @import "1-utilities/breakpoint";
 @import "1-utilities/utilities";
+@import "1-utilities/positions";
 @import "1-utilities/print";
 @import "1-utilities/helpers";
-// @import "1-utilities/grid";
+@import "1-utilities/grid";
 @import "1-utilities/animations";
 @import "1-utilities/wireframe";
 
@@ -26,7 +25,7 @@
 @import "2-atoms/logo";
 @import "2-atoms/tables";
 @import "2-atoms/typography";
-//
+
 // // Molecules
 //
 // @import "3-molecules/nav";
@@ -46,4 +45,4 @@
 //
 // // Skin
 //
-// @import "6-skin/theme";
+@import "6-skin/theme";

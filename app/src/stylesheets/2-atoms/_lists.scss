@@ -139,10 +139,18 @@ dl {
 //
 // Styleguide 1.4.4
 
-.list--horiz {
+.list--reset {
     margin: 0;
     padding: 0;
     list-style: none;
+
+    > li {
+        margin-bottom: 0;
+    }
+}
+
+.list--horiz {
+    @extend .list--reset;
 }
 
 .list--horiz__item {

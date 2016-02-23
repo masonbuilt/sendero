@@ -33,7 +33,7 @@ var autoprefixerOptions = {
 gulp.task('serve', ['clean', 'compile-css', 'compile-javascript', 'move-images',], function() {
 
     browserSync.init({
-        proxy: "http://local.sendero.dev/"
+        proxy: "localhost:3000"
     });
 
     gulp.watch(inputPathStylesheets + "**/*.scss", ['compile-css']);
@@ -84,7 +84,6 @@ gulp.task('compile-javascript', function() {
         .pipe(concat('all.js'))
         .pipe(gulp.dest(outputPathJavascripts))
         .pipe(browserSync.stream());
-
 
     gulp.src([inputPathJavascripts + 'application.js'])
         .pipe(concat('application.js'))

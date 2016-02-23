@@ -8,41 +8,59 @@
 //
 // markup:
 // <fieldset>
-//     <div class="field-container">
-//         <label for="text">Text Input <abbr title="Required">*</abbr></label>
-//         <input id="text" type="text" placeholder="Text Input">
+//     <div class="form-element">
+//         <label class="form-element__label" for="text">Text Input <abbr title="Required">*</abbr></label>
+//         <div class="form-element__control">
+//          <input id="text" type="text" placeholder="Text Input">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="password">Password</label>
-//         <input id="password" type="password" placeholder="Type your Password">
+//     <div class="form-element">
+//         <label class="form-element__label" for="password">Password</label>
+//         <div class="form-element__control">
+//          <input id="password" type="password" placeholder="Type your Password">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="webaddress">Web Address</label>
-//         <input id="webaddress" type="url" placeholder="http://yoursite.com">
+//     <div class="form-element">
+//         <label class="form-element__label" for="webaddress">Web Address</label>
+//         <div class="form-element__control">
+//          <input id="webaddress" type="url" placeholder="http://yoursite.com">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="emailaddress">Email Address</label>
-//         <input id="emailaddress" type="email" placeholder="name@email.com">
+//     <div class="form-element">
+//         <label class="form-element__label" for="emailaddress">Email Address</label>
+//         <div class="form-element__control">
+//          <input id="emailaddress" type="email" placeholder="name@email.com">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="search">Search</label>
-//         <input id="search" type="search" placeholder="Enter Search Term">
+//     <div class="form-element">
+//         <label class="form-element__label" for="search">Search</label>
+//         <div class="form-element__control">
+//          <input id="search" type="search" placeholder="Enter Search Term">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="text">Number Input <abbr title="Required">*</abbr></label>
-//         <input id="text" type="number" placeholder="Enter a Number" pattern="[0-9]*">
+//     <div class="form-element">
+//         <label class="form-element__label" for="text">Number Input <abbr title="Required">*</abbr></label>
+//         <div class="form-element__control">
+//          <input id="text" type="number" placeholder="Enter a Number" pattern="[0-9]*">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label for="textarea">Textarea</label>
-//         <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
+//     <div class="form-element">
+//         <label class="form-element__label" for="textarea">Textarea</label>
+//         <div class="form-element__control">
+//          <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label class="error">Error Input</label>
-//         <input class="is-error" type="text" placeholder="Text Input">
+//     <div class="form-element">
+//         <label class="form-element__label" class="error">Error Input</label>
+//         <div class="form-element__control">
+//          <input class="is-error" type="text" placeholder="Text Input">
+//         </div>
 //     </div>
-//     <div class="field-container">
-//         <label class="valid">Valid</label>
-//         <input class="is-valid" type="text" placeholder="Text Input">
+//     <div class="form-element">
+//         <label class="form-element__label" class="valid">Valid</label>
+//         <div class="form-element__control">
+//          <input class="is-valid" type="text" placeholder="Text Input">
+//         </div>
 //     </div>
 // </fieldset>
 //
@@ -58,13 +76,12 @@ input[type="url"],
 textarea,
 select {
     width: 100%;
-    padding: $spacing--small;
     border: $border--width solid $border--color;
     border-radius: $border__radius;
     background-color: transparent;
     box-shadow: none;
     appearance: none; // Removes awkward default styles on some inputs for iOS
-    padding: 1rem ($spacing * 2);
+    padding: $spacing--small $spacing;
     transition: border .2s ease;
 
     &:focus {
@@ -74,9 +91,24 @@ select {
     }
 }
 
+.form-element {
+    margin-bottom: $spacing--small;
+
+    &__label {
+        display: inline-block;
+        margin-left: $spacing;
+        margin-bottom: $spacing--small;
+    }
+}
+
 label {
-    margin-bottom: $spacing;
-    display: block;
+    font-size: $scale / 2 * 1rem;
+    text-transform: uppercase;
+}
+
+textarea {
+    resize: vertical;
+    padding: $spacing--small $spacing;
 }
 
 input[type="email"],
@@ -95,9 +127,6 @@ input[type="url"], {
     &.is-valid {
         border-color: $color--success;
     }
-}
-
-input {
 }
 
 .field-container {
@@ -131,17 +160,38 @@ input {
 //
 // markup:
 // <form action="#">
-//     <fieldset class="options">
-//         <legend>Checkbox <abbr title="Required">*</abbr></legend>
-//         <ul>
-//             <li><label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"> Choice A</label></li>
-//             <li><label for="checkbox2"><input id="checkbox2" name="checkbox" type="checkbox"> Choice B</label></li>
-//             <li><label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox"> Choice C</label></li>
-//         </ul>
-//     </fieldset>
+//     <span class="checkbox">
+//         <input class="checkbox__field" id="checkbox1" name="checkbox" type="checkbox" checked="checked">
+//         <label class="checkbox__label" for="checkbox1">Choice A</label>
+//     </span>
+//     <span class="checkbox">
+//         <input class="checkbox__field" id="checkbox2" name="checkbox" type="checkbox">
+//         <label class="checkbox__label" for="checkbox2">Choice B</label>
+//     </span>
+//     <span class="checkbox">
+//         <input class="checkbox__field" id="checkbox3" name="checkbox" type="checkbox">
+//         <label class="checkbox__label" for="checkbox3">Choice C</label>
+//     </span>
 // </form>
 //
 // Styleguide 1.5.3
+
+.input[type=checkbox],
+.input[type=radio] {
+  display: inline;
+}
+
+.checkbox {
+    margin-left: $spacing;
+}
+
+.checkbox__label,
+.radio__label {
+    margin-left: $spacing--xsmall;
+}
+
+
+
 
 // HTML5 Elements
 //

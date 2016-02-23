@@ -5,6 +5,7 @@
 html {
     box-sizing: border-box;
     height: 100%;
+    background: $color--theme-shade;
 }
 
 *,
@@ -22,6 +23,6 @@ svg {
 }
 
 img {
+    max-width: 100%;
     height: auto;
-    max-width: 100%
 }

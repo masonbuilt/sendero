@@ -1,67 +1,61 @@
 // Theme
 //
-// Backgrounds
+// markup:
+// <div class="box">
+//   <p>This is a regular sized box.</p>
+// </div>
+// <div class="box box--small">
+//   <p>This is a small box.</p>
+// </div>
+//
+// Styleguide 1.7.1
 
-// Dark Theme
+.box {
+  padding: $spacing;
+  border-radius: $border__radius;
 
-.theme--dark {
-    background-color: $color--theme-dark;
-    color: $color--white;
+  p:first-of-type {
+    margin-top: 0;
+  }
 
-    &.site-footer a {
-        color: rgba($color--white, .75);
-        border-bottom: $border--width $border--style $border--color;
-
-        &:hover {
-            color: $color--white;
-            border: none;
-        }
-    }
-
-    .main-nav__link {
-        color: $color--white;
-
-        &:hover {
-            color: $color--white;
-        }
-
-        &:before {
-            background: $color--theme-secondary;
-        }
-
-        @include breakpoint($xlarge) {
-            &:after {
-                background: rgba($color--white, .15);
-            }
-        }
-    }
+  &--small {
+    padding: $spacing--small;
+  }
 }
 
-// Light Theme
+// Color theme
+//
+// Use a color theme to apply color to the background and text. Some color themes apply a background image or texture. Color themes are typically used with box themes, toasts and alerts.
+//
+// markup:
+// <div class="box theme--default ">
+//   <p>This is a default theme and here is a <a>link</a>.</p>
+// </div>
+// <div class="box theme--shade">
+//   <p>This is a shade theme and here is a <a>link</a>.</p>
+// </div>
+// <div class="box theme--inverse">
+//   <p>This is a shade theme and here is a <a>link</a>.</p>
+// </div>
+// <div class="box theme--alt-inverse">
+//   <p>This is a shade theme and here is a <a>link</a>.</p>
+// </div>
+//
+// Styleguide 1.7.2
 
-.theme--blue {
-    background-color: $color--theme-primary;
-    color: $color--white;
-
-    h1 {
-        color: $color--white;
-
-        &:after {
-            background: $color--white;
-        }
-    }
+.theme--default {
+  @include theme();
 }
 
-// Light Theme Secondary
 
-.theme--teal {
-    background-color: $color--theme-highlight;
-    color: $color--white;
+.theme--shade {
+  @include theme(shade);
 }
 
-// Secondary Theme
+.theme--inverse {
+  @include theme(inverse);
+}
 
-.theme--secondary {
-    background-color: $color--theme-secondary;
-    color: $color--white;
+.theme--alt-inverse {
+  @include theme(alt-inverse);
 }

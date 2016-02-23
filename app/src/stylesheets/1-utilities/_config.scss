@@ -8,11 +8,14 @@ $wireframe: false;
 
 // Breakpoints
 
-$small: 400px;
-$medium: 620px;
+$xsmall--down: 479px;
+$xsmall: 480px;
+$small--down: 767px;
+$small: 768px;
+$medium: 960px;
 $large: 1024px;
-$xlarge: 1200px;
-$xxlarge: 1440px;
+$xlarge: 1280px;
+$xxlarge: 1330px;
 
 // Descrpitive Base Colors
 
@@ -33,6 +36,7 @@ $color--yellow: #f4b400;
 
 // Theme Colors
 
+$color--theme-shade: #FBFBFB;
 $color--theme-gray--light: #EEEEEE;
 $color--theme-gray: #505762;
 $color--theme-gray--dark: #393E46;
@@ -56,9 +60,9 @@ $ui-colors: (
 );
 
 // Font Stacks
-
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700,300);
 $font-family--mono: Monaco, Consolas, monospace;
-$font-family--primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family--primary: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // Font Weights
 
@@ -72,9 +76,10 @@ $base__font-size: 16;
 $base__line-height: 1.5;
 $base__font-weight: $font-weight--medium;
 $base__leading: $base__line-height * 1rem;
-$spacing--large: $base__leading;
-$spacing: $base__leading / 2;
-$spacing--small: $base__leading / 4;
+// $spacing--large: $base__leading;
+$spacing: $base__leading;
+$spacing--small: $base__leading / 2;
+$spacing--xsmall: $base__leading / 4;
 
 // Headings
 
@@ -89,13 +94,6 @@ $border--width: .1rem;
 $border--color: $color--theme-gray--light;
 $border--style: solid;
 
-// Forms
-
-$forms__border--width: .1rem;
-$forms__border--color: $color--white;
-$forms__border--style: solid;
-$forms__border--color--focus: $color--white;
-
 // Blockquote
 
 $blockquote__border--width: .4rem;
@@ -105,14 +103,7 @@ $blockquote__background: $color--white;
 
 // Button
 
-$btn__border-width: .15rem;
 $btn__font-stack: $font-family--primary;
-$btn__color: rgba($color--white, .1);
-$btn__border-color: $color--white;
-$btn__border-color--hover:  $color--white;
-$btn__font-color: $color--white;
-$btn__font-color--hover: $color--white;
-$btn__color--hover: rgba($color--white, .2);
 
 // Path to Assets
 

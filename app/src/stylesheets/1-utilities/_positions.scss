@@ -1,0 +1,54 @@
+// spacing
+
+// Basic Positioning Properties
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed    { position: fixed; }
+
+// Flex Item Alignment
+
+.align-top { align-self: flex-start; }
+.align-bottom { align-self: flex-end; }
+.align-center { align-self: center; }
+.auto-size { flex: none; }
+
+// Absolute Positioning
+
+.top    { top: 0; }
+.right  { right: 0; }
+.bottom { bottom: 0; }
+.left   { left: 0; }
+
+.absolute-center {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto
+}
+
+// Flexbox Alignment
+@include breakpoint(small) {
+  .aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aligner__item {
+    width: $spacing * 20;
+  }
+
+  .aligner__item--top {
+    align-self: flex-start;
+  }
+
+  .aligner__item--bottom {
+    align-self: flex-end;
+  }
+}
+
+// Full window hight
+.full-height { height: 100vh; }

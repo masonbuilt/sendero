@@ -11,3 +11,57 @@
     background-image: url("#{$path--rel}/#{$img}");
     background-repeat: no-repeat;
 }
+
+// theme
+
+// Inverse Links
+@mixin inverse-links {
+  color: $color--white;
+
+  a:not(.btn) {
+    color: $color--white;
+    text-decoration: underline;
+
+    &:link,
+    &:visited {
+      color: darken($color--white, 5%);
+    }
+
+    &:hover,
+    &:focus {
+      color: darken($color--white, 15%);
+    }
+
+    &:active {
+      color: darken($color--white, 15%);
+    }
+
+    &[disabled] {
+      color: $color--grey;
+    }
+  }
+}
+
+// Theme Helper
+@mixin theme($theme: null) {
+
+    @if $theme == shade {
+        background-color: $color--theme-shade;
+        border: $border--width solid $border--color;        
+    }
+
+    @elseif $theme == inverse {
+        background-color: $color--theme-gray--dark;
+        @include inverse-links;
+    }
+
+    @elseif $theme == alt-inverse {
+        background-color: $color--theme-blue;
+        @include inverse-links;
+    }
+
+    @else {
+        background-color: $color--white;
+        border: $border--width solid $border--color;
+    }
+}
