@@ -1,15 +1,15 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
-  before_action :require_user_is_owner, except: [:index, :show]
+  before_action :require_user_is_owner, only: [:edit, :update, :destroy]
 
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.all
+    @routes = Route.all.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
       format.html
-      format.json { render json: @routes, each_serializer: PartialRouteSerializer }
+      format.json { render json: @routes, root: false }
     end
   end
 
@@ -37,12 +37,12 @@ class RoutesController < ApplicationController
   # POST /routes
   # POST /routes.json
   def create
-    @route = Route.new(route_params)
-
+    @route = Route.new(route_params.merge("owner_id" => current_user.id))
+    
     respond_to do |format|
       if @route.save
         format.html { redirect_to @route, notice: 'Route was successfully created.' }
-        format.json { render :show, status: :created, location: @route }
+        format.json { render json: @route, status: :created }
       else
         format.html { render :new }
         format.json { render json: @route.errors, status: :unprocessable_entity }

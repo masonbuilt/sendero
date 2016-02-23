@@ -3,7 +3,7 @@ var RouteListItem = React.createClass({
     return (
       <tr className="routeListItem">
         <td className="routeListItemName">
-          <a href={"/routes/" + this.props.id}>{this.props.name}</a>
+          <a href={"/routes/" + this.props.id}>{this.props.name} </a>
           ({this.props.grade})
         </td>
         <td className="routeListItemEdit">

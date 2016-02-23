@@ -1,8 +1,55 @@
 var RouteList = React.createClass({
+
+  getInitialState: function() {
+    return {data: [], isModalOpen: false};
+  },
+
+  openModal: function() {
+    this.setState({isModalOpen: true});
+  },
+
+  closeModal: function() {
+    this.setState({isModalOpen: false});
+  },
+
+  handleRouteSubmit: function(route) {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      type: 'POST',
+      data: {route: route},
+      success: function(data) {
+        this.setState({data: data});
+        this.loadRoutesFromServer();
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
+  componentDidMount: function() {
+    this.loadRoutesFromServer();
+    setInterval(this.loadRoutesFromServer, this.props.pollInterval);
+  },
+
+  loadRoutesFromServer: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function(data) {
+        this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
+
   render: function() {
 
-    var routeListItems = this.props.data.map(function(route) {
-    console.log(route);
+    var routeListItems = this.state.data.map(function(route) {
       return (
         <RouteListItem info={route.info} key={route.id} name={route.name} id={route.id} ownerId={route.owner_id} grade={route.grade} />
       );
@@ -12,8 +59,21 @@ var RouteList = React.createClass({
       <div className="routeList">
         <h2>Listing routes</h2>
         <table className="routeListTable">
-        {routeListItems}
+          <tbody>
+            {routeListItems}
+          </tbody>
         </table>
+        <Modal
+          isOpen={this.state.isModalOpen}
+          transitionName="modal-anim"
+          onRequestClose={this.closeModal}
+        >
+
+          <h2>Add Route</h2>
+          <button onClick={this.closeModal}>Close</button>
+          <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
+        </Modal>
+        <button onClick={this.openModal}>Add Route</button>
       </div>
     );
   }
