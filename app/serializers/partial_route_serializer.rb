@@ -1,7 +1,8 @@
 class PartialRouteSerializer < ActiveModel::Serializer
   attributes  :id,
               :name,
-              :grade
+              :grade,
+              :owner_id
 
   private
 

@@ -1,16 +1,19 @@
 var RouteList = React.createClass({
   render: function() {
 
-    var routeNodes = this.props.data.map(function(route) {
+    var routeListItems = this.props.data.map(function(route) {
+    console.log(route);
       return (
-        <Route info={route.info} key={route.id} name={route.name} id={route.id} />
+        <RouteListItem info={route.info} key={route.id} name={route.name} id={route.id} ownerId={route.owner_id} grade={route.grade} />
       );
     });
 
     return (
       <div className="routeList">
         <h2>Listing routes</h2>
-        {routeNodes}
+        <table className="routeListTable">
+        {routeListItems}
+        </table>
       </div>
     );
   }
