@@ -5,12 +5,20 @@ class GradesController < ApplicationController
   # GET /grades.json
   def index
     @grades = Grade.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @grades }
+    end
   end
 
   # GET /grades/1
   # GET /grades/1.json
   def show
     @routes = @grade.routes
+    respond_to do |format|
+      format.html
+      format.json { render json: @grade }
+    end
   end
 
   # GET /grades/new

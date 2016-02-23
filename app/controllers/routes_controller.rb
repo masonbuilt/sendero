@@ -7,6 +7,10 @@ class RoutesController < ApplicationController
   # GET /routes.json
   def index
     @routes = Route.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @routes, each_serializer: PartialRouteSerializer }
+    end
   end
 
   # GET /routes/1
@@ -15,6 +19,10 @@ class RoutesController < ApplicationController
     @projects = @route.projects
     @grade    = @route.grade
     @comments = @route.comments
+    respond_to do |format|
+      format.html
+      format.json { render json: @route }
+    end
   end
 
   # GET /routes/new

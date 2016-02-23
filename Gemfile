@@ -44,6 +44,8 @@ gem 'state_machine'
 gem 'configreader'
 gem 'pg'
 
+gem 'active_model_serializers'
+
 gem 'pry'
 
 group :development, :test do
