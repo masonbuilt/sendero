@@ -4,6 +4,10 @@ class Users::RoutesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @routes = @user.routes
+    respond_to do |format|
+      format.html
+      format.json { render json: @routes, each_serializer: PartialRouteSerializer }
+    end
   end
 
   def destroy

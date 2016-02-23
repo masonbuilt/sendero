@@ -6,7 +6,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects.includes(route: [:grade]).all
+    @projects = Project.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @projects, each_serializer: PartialProjectSerializer }
+    end
   end
 
   # GET /projects/1
@@ -15,6 +19,10 @@ class ProjectsController < ApplicationController
     @user = @project.user
     @route = @project.route
     @grade = @route.grade
+    respond_to do |format|
+      format.html
+      format.json { render json: @project }
+    end
   end
 
   # GET /projects/new
