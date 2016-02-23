@@ -20,7 +20,6 @@ var RouteList = React.createClass({
       data: {route: route},
       success: function(data) {
         this.setState({data: data});
-        this.loadRoutesFromServer();
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -57,7 +56,6 @@ var RouteList = React.createClass({
 
     return (
       <div className="routeList">
-        <h2>Listing routes</h2>
         <table className="routeListTable">
           <tbody>
             {routeListItems}

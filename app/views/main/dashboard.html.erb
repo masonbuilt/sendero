@@ -3,22 +3,9 @@
 <% if current_user %>
     <h3>Welcome, <%= link_to current_user.name, current_user %></h3>
     <h3>My Routes</h3>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Grade</th>
-            <th></th>
-        </tr>
-        <% current_user.routes.limit(5).each do |route| %>
-            <tr>
-                <td><%= link_to route.name, route %></td>
-                <td><%= link_to route.grade.name, route.grade %></td>
-                <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-             </tr>
-        <% end %>
-    </table>
+    <%= react_component "RouteList", url: "/users/#{current_user.id}/routes", pollInterval: 5000 %>
     <p>
-      <%= link_to "See more", user_routes_path(current_user) %> | 
+      <%= link_to "See all", user_routes_path(current_user) %> | 
       <%= link_to "All routes", routes_path %>
     </p>
 

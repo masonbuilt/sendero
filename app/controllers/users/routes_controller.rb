@@ -3,10 +3,10 @@ class Users::RoutesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @routes = @user.routes
+    @routes = @user.routes.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
       format.html
-      format.json { render json: @routes, each_serializer: PartialRouteSerializer }
+      format.json { render json: @routes, root: false }
     end
   end
 
