@@ -1,7 +1,15 @@
 var RouteList = React.createClass({
 
   getInitialState: function() {
-    return {data: []};
+    return {data: [], isModalOpen: false};
+  },
+
+  openModal: function() {
+    this.setState({isModalOpen: true});
+  },
+
+  closeModal: function() {
+    this.setState({isModalOpen: false});
   },
 
   handleRouteSubmit: function(route) {
@@ -12,7 +20,7 @@ var RouteList = React.createClass({
       data: {route: route},
       success: function(data) {
         this.setState({data: data});
-        this.componentDidMount();
+        this.loadRoutesFromServer();
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -55,7 +63,17 @@ var RouteList = React.createClass({
             {routeListItems}
           </tbody>
         </table>
-        <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
+        <Modal
+          isOpen={this.state.isModalOpen}
+          transitionName="modal-anim"
+          onRequestClose={this.closeModal}
+        >
+
+          <h2>Add Route</h2>
+          <button onClick={this.closeModal}>Close</button>
+          <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
+        </Modal>
+        <button onClick={this.openModal}>Add Route</button>
       </div>
     );
   }

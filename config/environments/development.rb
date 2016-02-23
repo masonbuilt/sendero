@@ -30,6 +30,8 @@ Rails.application.configure do
   # Log level
   config.log_level = :debug
 
+  # React add-ons
+  config.react.addons = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
