@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  scope :auth do
+    get 'is_signed_in', to: 'users#is_signed_in?'
+    get 'current', to: 'users#current'
+  end
+
   get "users/:id" => "users#show", as: "user"
   get "users/:user_id/comments" => "users/comments#index", as: "user_comments"
   delete "users/:user_id/comment/:id" => "users/comments#destroy", as: "destroy_user_comment"
