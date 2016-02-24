@@ -6,10 +6,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
     respond_to do |format|
       format.html
-      format.json { render json: @projects, each_serializer: PartialProjectSerializer }
+      format.json do
+        render json: Project.all, each_serializer: PartialProjectSerializer, root: false
+      end
     end
   end
 

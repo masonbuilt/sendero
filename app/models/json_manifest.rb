@@ -10,9 +10,11 @@ class JSONManifest
   class << self
     DEREFERENCE_TABLE = {
       "integer" => "number",
+      "number" => "number",
       "character varying" => "string",
       "timestamp without time zone" => "string",
-      "text" => "string"
+      "text" => "string",
+      "string" => "string"
     }
 
     def produce(klass, *attributes)

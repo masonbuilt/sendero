@@ -11,5 +11,10 @@ RSpec.describe JSONManifest, type: :model do
       expected_hash = {"id" => "number", "name" => "string"}
       expect(JSONManifest.produce(Route, :id, :name)).to eq(expected_hash)
     end
+
+    it "lets you add on keys" do
+      expected_hash = {"id" => "number", "name" => "string", "user" => "string", "route" => "string"}
+      expect(JSONManifest.produce(Route, :id, :name, {"user" => "character varying", "route" => "character varying"}))
+    end
   end
 end
