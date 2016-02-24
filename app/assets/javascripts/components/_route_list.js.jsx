@@ -61,16 +61,9 @@ var RouteList = React.createClass({
             {routeListItems}
           </tbody>
         </table>
-        <Modal
-          isOpen={this.state.isModalOpen}
-          transitionName="modal-anim"
-          onRequestClose={this.closeModal}
-        >
-
-          <h2>Add Route</h2>
-          <button onClick={this.closeModal}>Close</button>
-          <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
-        </Modal>
+        <h2>Add Route</h2>
+        <button onClick={this.closeModal}>Close</button>
+        <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
         <button onClick={this.openModal}>Add Route</button>
       </div>
     );
