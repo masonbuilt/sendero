@@ -1,15 +1,7 @@
 var RouteList = React.createClass({
 
   getInitialState: function() {
-    return {data: [], isModalOpen: false};
-  },
-
-  openModal: function() {
-    this.setState({isModalOpen: true});
-  },
-
-  closeModal: function() {
-    this.setState({isModalOpen: false});
+    return {data: []};
   },
 
   handleRouteSubmit: function(route) {
@@ -61,10 +53,7 @@ var RouteList = React.createClass({
             {routeListItems}
           </tbody>
         </table>
-        <h2>Add Route</h2>
-        <button onClick={this.closeModal}>Close</button>
         <NewRouteForm onRouteSubmit={this.handleRouteSubmit} />
-        <button onClick={this.openModal}>Add Route</button>
       </div>
     );
   }

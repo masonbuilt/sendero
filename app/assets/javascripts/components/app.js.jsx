@@ -11,6 +11,9 @@ var App = React.createClass({
               <Link to='/new'>New Route</Link>
             </li>
             <li>
+              <Link to='/test'>Test</Link>
+            </li>
+            <li>
               <Link to='/routez'>All Routes</Link>
             </li>
           </ul>

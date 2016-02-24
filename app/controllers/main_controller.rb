@@ -1,6 +1,7 @@
 class MainController < ApplicationController
 	before_action :redirect_to_login, if: -> { current_user.nil? }
-  
+  layout "react", only: :landing
+
   def dashboard
   end
 

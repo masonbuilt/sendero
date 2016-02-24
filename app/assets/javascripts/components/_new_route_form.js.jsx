@@ -30,22 +30,25 @@ var NewRouteForm = React.createClass({
 
   render: function() {
     return(
-      <form onSubmit={this.handleSubmit} className="newRouteForm">
-        <input
-          type="text"
-          placeholder="Route name"
-          value={this.state.name}
-          onChange={this.handleNameChange}
-        />
-        <input
-          type="text"
-          placeholder="Describe this route..."
-          value={this.state.info}
-          onChange={this.handleInfoChange}
-        />
-        <GradeSelect onSelectChange={this.handleGradeChange} />
-        <input type="submit" value="Create" />
-      </form>
+      <div>
+        <h3>Add Route</h3>
+        <form onSubmit={this.handleSubmit} className="newRouteForm">
+          <input
+            type="text"
+            placeholder="Route name"
+            value={this.state.name}
+            onChange={this.handleNameChange}
+          />
+          <input
+            type="text"
+            placeholder="Describe this route..."
+            value={this.state.info}
+            onChange={this.handleInfoChange}
+          />
+          <GradeSelect onSelectChange={this.handleGradeChange} />
+          <input type="submit" value="Create" />
+        </form>
+      </div>
     );
   }
 });

@@ -44,7 +44,7 @@ gem 'state_machine'
 gem 'configreader'
 gem 'pg'
 
-gem 'react-rails', '~> 1.6.0'
+gem 'react-rails', "~> 1.4.0"
 gem 'react-router-rails'
 gem 'execjs'
 gem 'node'

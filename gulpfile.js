@@ -85,10 +85,9 @@ gulp.task('build-css', function() {
 });
 
 filesToFuckingInclude = [
-  './app/assets/javascripts/components/_app.js.jsx',
+  './app/assets/javascripts/components/app.js.jsx',
   './app/assets/javascripts/components/_grade_select.js.jsx',
   './app/assets/javascripts/components/_grade_select_option.js.jsx',
-  './app/assets/javascripts/components/_modal.js.jsx',
   './app/assets/javascripts/components/_new_route_form.js.jsx',
   './app/assets/javascripts/components/_route_list.js.jsx',
   './app/assets/javascripts/components/_route_list_item.js.jsx',
@@ -166,6 +165,7 @@ gulp.task('clean', function () {
   return del.sync([
     outputPathImages + '*',
     outputPathJavascripts + 'react-bundle.js',
+    outputPathJavascripts + 'react-bundle.js.map',
     outputPathStylesheets + 'application.css'
   ], {force: true});
 });
