@@ -13,23 +13,17 @@ var del = require('del');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var image = require('gulp-image');
-var watchify   = require('watchify');
-var browserify = require('browserify');
-var source     = require('vinyl-source-stream');
-var buffer     = require('vinyl-buffer');
-var assign     = require('lodash.assign');
-var reactify   = require('reactify');
-var babelify   = require("babelify");
 
 // Paths
-var outputPath = './app/assets/';
+var outputPath = 'app/assets/';
 var outputPathImages = outputPath + 'images/';
 var outputPathStylesheets = outputPath + 'stylesheets/';
 var outputPathJavascripts = outputPath + 'javascripts/';
-var inputPathImages = 'images/';
-var inputPathStylesheets = 'stylesheets/';
-var inputPathJavascripts = 'javascripts/';
 var outputPathStyleguide = outputPath + 'styleguide';
+var inputPath = 'src/';
+var inputPathImages = inputPath + 'images/';
+var inputPathStylesheets = inputPath + 'stylesheets/';
+var inputPathJavascripts = inputPath + 'javascripts/';
 
 // Browser definitions for autoprefixer
 var autoprefixerOptions = {
@@ -37,14 +31,14 @@ var autoprefixerOptions = {
 };
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['clean', 'compile-css', 'development', 'move-images',], function() {
+gulp.task('serve', ['clean', 'compile-css', 'compile-javascript', 'move-images',], function() {
 
     browserSync.init({
         proxy: "localhost:3000"
     });
 
     gulp.watch(inputPathStylesheets + "**/*.scss", ['compile-css']);
-    gulp.watch(inputPathJavascripts + "**/*.js", ['compile-javascript']);
+    // gulp.watch(inputPathJavascripts + "**/*.js", ['compile-javascript']);
     gulp.watch(inputPathImages + "**/*", ['move-images']);
 });
 
@@ -84,68 +78,33 @@ gulp.task('build-css', function() {
         }));
 });
 
-filesToFuckingInclude = [
-  './app/assets/javascripts/components/app.js.jsx',
-  './app/assets/javascripts/components/_grade_select.js.jsx',
-  './app/assets/javascripts/components/_grade_select_option.js.jsx',
-  './app/assets/javascripts/components/_new_route_form.js.jsx',
-  './app/assets/javascripts/components/_route_list.js.jsx',
-  './app/assets/javascripts/components/_route_list_item.js.jsx',
-  ]
-// add custom browserify options here
-var customOpts = {
-  entries: filesToFuckingInclude,
-  transform: [
-    ["reactify", {"es6": true}]
-  ], // We want to convert JSX to normal javascript and es6 to es5
-  debug: true
-};
-var opts = assign({}, watchify.args, customOpts);
+// Compile Development JavaScript
+gulp.task('compile-javascript', function() {
 
-var production = browserify(opts); 
-gulp.task('production', bundleProduction);
-production.on('log', gutil.log); // output build logs to terminal
+    gulp.src([outputPathJavascripts + 'libs/**/*.js'])
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest(outputPathJavascripts))
+        .pipe(browserSync.stream());
 
-var development = watchify(browserify(opts)); 
-gulp.task('development', bundleDevelopment);
-development.on('update', bundleDevelopment); // on any dep update, runs the bundler
-development.on('log', gutil.log); // output build logs to terminal
-
-function bundleDevelopment() {
-  return development.bundle()
-    // log errors if they happen
-    .on('error', function(err){
-      console.log(err.message);
-    })
-    .pipe(source('react-bundle.js'))
-    // optional, remove if you don't need to buffer file contents
-    .pipe(buffer())
-    // optional, remove if you dont want sourcemaps
-    .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-       // Add transformation tasks to the pipeline here.
-    .pipe(sourcemaps.write('./')) // writes .map file
-    .pipe(gulp.dest('./app/assets/javascripts'));
-}
-
-function bundleProduction() {
-  return production.bundle()
-    // log errors if they happen
-    .on('error', function(err){
-      console.log(err.message);
-    })
-    .pipe(source('react-bundle.js'))
-    // optional, remove if you don't need to buffer file contents
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('./app/assets/javascripts'));
-}
-
-gulp.task('reset-javascript', function() {
-  return gulp
-    .src('./etc/application.js')
-    .pipe(gulp.dest('./app/assets/javascripts/'));
+    gulp.src([inputPathJavascripts + 'application.js'])
+        .pipe(concat('application.js'))
+        .pipe(gulp.dest(outputPathJavascripts))
+        .pipe(browserSync.stream());
 });
 
+// Build JS
+gulp.task('build-javascript', function() {
+
+    gulp.src([outputPathJavascripts + 'libs/**/*.js'])
+        .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(outputPathJavascripts));
+
+    gulp.src([inputPathJavascripts + 'application.js'])
+        .pipe(concat('application.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(outputPathJavascripts));
+});
 
 // Move Images
 gulp.task('move-images', function() {
@@ -164,8 +123,7 @@ gulp.task('build-images', function() {
 gulp.task('clean', function () {
   return del.sync([
     outputPathImages + '*',
-    outputPathJavascripts + 'react-bundle.js',
-    outputPathJavascripts + 'react-bundle.js.map',
+    // outputPathJavascripts + 'application.js',
     outputPathStylesheets + 'application.css'
   ], {force: true});
 });
@@ -207,4 +165,4 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('watch', ['serve']);
 
 // Build Production
-gulp.task('build', ['clean-build', 'build-css', 'development', 'build-images']);
+gulp.task('build', ['clean-build', 'build-css', 'build-images']);
