@@ -1,9 +1,15 @@
 class PartialProjectSerializer < ActiveModel::Serializer
-  attributes  :id,
-              :status,
-              :user,
-              :route,
-              :grade
+  
+  ATTRIBUTES = [:id, :status, :user, :route, :grade]
+
+  class << self
+
+    def json_manifest
+      JSONManifest.produce(Project, *ATTRIBUTES)
+    end
+  end
+
+  attributes *PartialProjectSerializer::ATTRIBUTES
 
   private
 
