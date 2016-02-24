@@ -1,4 +1,4 @@
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 var Modal = React.createClass({
     render: function() {

@@ -85,16 +85,12 @@ gulp.task('build-css', function() {
 });
 
 filesToFuckingInclude = [
-  './app/assets/javascripts/App.js',
-  './app/assets/javascripts/utils/functions.js',
   './app/assets/javascripts/components/_grade_select.js.jsx',
   './app/assets/javascripts/components/_grade_select_option.js.jsx',
-  './app/assets/javascripts/components/_login_page.js.jsx',
   './app/assets/javascripts/components/_modal.js.jsx',
   './app/assets/javascripts/components/_new_route_form.js.jsx',
   './app/assets/javascripts/components/_route_list.js.jsx',
   './app/assets/javascripts/components/_route_list_item.js.jsx',
-  './app/assets/javascripts/components/_sign_in_form.js.jsx'
   ]
 // add custom browserify options here
 var customOpts = {
@@ -121,7 +117,7 @@ function bundleDevelopment() {
     .on('error', function(err){
       console.log(err.message);
     })
-    .pipe(source('react-bundle.js'))
+    .pipe(source('application.js'))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     // optional, remove if you dont want sourcemaps
@@ -137,12 +133,18 @@ function bundleProduction() {
     .on('error', function(err){
       console.log(err.message);
     })
-    .pipe(source('react-bundle.js'))
+    .pipe(source('application.js'))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest('./app/assets/javascripts'));
 }
+
+gulp.task('reset-javascript', function() {
+  return gulp
+    .src('./etc/application.js')
+    .pipe(gulp.dest('./app/assets/javascripts/'));
+});
 
 // Compile Development JavaScript
 gulp.task('compile-javascript', function() {
