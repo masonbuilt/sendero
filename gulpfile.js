@@ -85,6 +85,7 @@ gulp.task('build-css', function() {
 });
 
 filesToFuckingInclude = [
+  './app/assets/javascripts/components/_app.js.jsx',
   './app/assets/javascripts/components/_grade_select.js.jsx',
   './app/assets/javascripts/components/_grade_select_option.js.jsx',
   './app/assets/javascripts/components/_modal.js.jsx',
@@ -117,7 +118,7 @@ function bundleDevelopment() {
     .on('error', function(err){
       console.log(err.message);
     })
-    .pipe(source('application.js'))
+    .pipe(source('react-bundle.js'))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     // optional, remove if you dont want sourcemaps
@@ -133,7 +134,7 @@ function bundleProduction() {
     .on('error', function(err){
       console.log(err.message);
     })
-    .pipe(source('application.js'))
+    .pipe(source('react-bundle.js'))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
     .pipe(uglify())
@@ -144,20 +145,6 @@ gulp.task('reset-javascript', function() {
   return gulp
     .src('./etc/application.js')
     .pipe(gulp.dest('./app/assets/javascripts/'));
-});
-
-// Compile Development JavaScript
-gulp.task('compile-javascript', function() {
-
-    gulp.src([outputPathJavascripts + 'libs/**/*.js'])
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest(outputPathJavascripts))
-        .pipe(browserSync.stream());
-
-    gulp.src([inputPathJavascripts + 'application.js'])
-        .pipe(concat('application.js'))
-        .pipe(gulp.dest(outputPathJavascripts))
-        .pipe(browserSync.stream());
 });
 
 
@@ -178,7 +165,7 @@ gulp.task('build-images', function() {
 gulp.task('clean', function () {
   return del.sync([
     outputPathImages + '*',
-    outputPathJavascripts + 'application.js',
+    outputPathJavascripts + 'react-bundle.js',
     outputPathStylesheets + 'application.css'
   ], {force: true});
 });

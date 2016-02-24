@@ -28,3 +28,4 @@ config/database.yml
 
 app/assets/javascripts/react-bundle.js
 app/assets/javascripts/react-bundle.js.map
+app/assets/stylesheets/application.css
