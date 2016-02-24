@@ -5,6 +5,7 @@ class MainController < ApplicationController
   end
 
   def landing
+    @location_path = "/#{params[:path]}"
   end
 
   private

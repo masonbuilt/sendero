@@ -1,3 +1,5 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Modal = React.createClass({
     render: function() {
         if(this.props.isOpen){

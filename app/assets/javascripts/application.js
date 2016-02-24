@@ -8,4 +8,5 @@
 //= require react_ujs
 //= require components
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+//= require react_router
+//= require react_router_ujs

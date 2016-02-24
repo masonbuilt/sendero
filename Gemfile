@@ -45,6 +45,7 @@ gem 'configreader'
 gem 'pg'
 
 gem 'react-rails', '~> 1.6.0'
+gem 'react-router-rails'
 gem 'execjs'
 gem 'node'
 gem 'active_model_serializers'
