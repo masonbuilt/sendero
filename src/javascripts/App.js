@@ -1,8 +1,7 @@
 var React        = require('react');
 var Router       = require('react-router');
 var RouteHandler = Router.RouteHandler;
-var $            = require('jquery');
- 
+
 var App =
   React.createClass({
     componentWillMount: function() {
