@@ -1,0 +1,23 @@
+// Spacing
+
+// Margin
+.margin-top { margin-top: $spacing; }
+.margin-bottom { margin-bottom: $spacing; }
+.margin-left { margin-left: $spacing; }
+.margin-right { margin-right: $spacing; }
+
+.margin-top--small { margin-top: $spacing--small; }
+.margin-bottom--small { margin-bottom: $spacing--small; }
+.margin-left--small { margin-left: $spacing--small; }
+.margin-right--small { margin-right: $spacing--small; }
+
+// Padding
+.padding-top { padding-top: $spacing; }
+.padding-bottom { padding-bottom: $spacing; }
+.padding-left { padding-left: $spacing; }
+.padding-right { padding-right: $spacing; }
+
+.padding-top--small { padding-top: $spacing--small; }
+.padding-bottom--small { padding-bottom: $spacing--small; }
+.padding-left--small { padding-left: $spacing--small; }
+.padding-right--small { padding-right: $spacing--small; }

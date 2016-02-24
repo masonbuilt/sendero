@@ -252,3 +252,13 @@ code {
     border-radius: .1rem;
     background-color: $color--silver;
 }
+
+
+// Text Helpers
+//
+// Styleguide 7.1.1
+
+.text-optimal-length { max-width: 70ch; }
+.text-align--left { text-align: left; }
+.text-align--center { text-align: center; }
+.text-align--right { text-align: right; }
