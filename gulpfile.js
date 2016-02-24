@@ -37,7 +37,7 @@ var autoprefixerOptions = {
 };
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['clean', 'compile-css', 'js', 'move-images',], function() {
+gulp.task('serve', ['clean', 'compile-css', 'development', 'move-images',], function() {
 
     browserSync.init({
         proxy: "localhost:3000"
@@ -84,26 +84,43 @@ gulp.task('build-css', function() {
         }));
 });
 
+filesToFuckingInclude = [
+  './app/assets/javascripts/App.js',
+  './app/assets/javascripts/utils/functions.js',
+  './app/assets/javascripts/components/_grade_select.js.jsx',
+  './app/assets/javascripts/components/_grade_select_option.js.jsx',
+  './app/assets/javascripts/components/_login_page.js.jsx',
+  './app/assets/javascripts/components/_modal.js.jsx',
+  './app/assets/javascripts/components/_new_route_form.js.jsx',
+  './app/assets/javascripts/components/_route_list.js.jsx',
+  './app/assets/javascripts/components/_route_list_item.js.jsx',
+  './app/assets/javascripts/components/_sign_in_form.js.jsx'
+  ]
 // add custom browserify options here
 var customOpts = {
-  entries: ['./app/assets/javascripts/App.js'],
-  transform: [reactify, babelify], // We want to convert JSX to normal javascript and es6 to es5
+  entries: filesToFuckingInclude,
+  transform: [
+    ["reactify", {"es6": true}]
+  ], // We want to convert JSX to normal javascript and es6 to es5
   debug: true
 };
 var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
- 
-// add transformations here
-// i.e. b.transform(coffeeify);
- 
-gulp.task('js', bundle); // so you can run `gulp js` to build the file
-b.on('update', bundle); // on any dep update, runs the bundler
-b.on('log', gutil.log); // output build logs to terminal
- 
-function bundle() {
-  return b.bundle()
+
+var production = browserify(opts); 
+gulp.task('production', bundleProduction);
+production.on('log', gutil.log); // output build logs to terminal
+
+var development = watchify(browserify(opts)); 
+gulp.task('development', bundleDevelopment);
+development.on('update', bundleDevelopment); // on any dep update, runs the bundler
+development.on('log', gutil.log); // output build logs to terminal
+
+function bundleDevelopment() {
+  return development.bundle()
     // log errors if they happen
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .on('error', function(err){
+      console.log(err.message);
+    })
     .pipe(source('react-bundle.js'))
     // optional, remove if you don't need to buffer file contents
     .pipe(buffer())
@@ -111,6 +128,19 @@ function bundle() {
     .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
        // Add transformation tasks to the pipeline here.
     .pipe(sourcemaps.write('./')) // writes .map file
+    .pipe(gulp.dest('./app/assets/javascripts'));
+}
+
+function bundleProduction() {
+  return production.bundle()
+    // log errors if they happen
+    .on('error', function(err){
+      console.log(err.message);
+    })
+    .pipe(source('react-bundle.js'))
+    // optional, remove if you don't need to buffer file contents
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('./app/assets/javascripts'));
 }
 
@@ -188,4 +218,4 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('watch', ['serve']);
 
 // Build Production
-gulp.task('build', ['clean-build', 'build-css', 'js', 'build-images']);
+gulp.task('build', ['clean-build', 'build-css', 'development', 'build-images']);

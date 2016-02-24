@@ -1,6 +1,6 @@
 class MainController < ApplicationController
-	before_action :redirect_to_login, if: -> { current_user.nil? }, except: :landing
-
+	before_action :redirect_to_login, if: -> { current_user.nil? }
+  
   def dashboard
   end
 
