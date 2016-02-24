@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'main#dashboard'
-  get "landing", to: "main#landing"
+  get "landing", to: "main#landing" # This will be a test-ground for building the main React app component
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
