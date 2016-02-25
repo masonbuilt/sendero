@@ -14,6 +14,8 @@ class PartialProjectSerializer < GenericSerializer
     end
   end
 
+  attributes *self.original_attributes
+
   private
 
   def user
