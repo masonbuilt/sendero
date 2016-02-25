@@ -1,0 +1,63 @@
+// Login
+//
+// markup:
+// <ul class="list--horiz margin-bottom margin-top login-tab">
+//     <li class="list--horiz__item is-current login-tab__item">
+//         <a href="" class="login-tab__link is-active">Log In</a>
+//     </li>
+//     <li class="list--horiz__item login-tab__item">
+//         <a href="" class="login-tab__link">Sign Up</a>
+//     </li>
+// </ul>
+// <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post">
+//     <input name="utf8" type="hidden" value="✓" />
+//     <input type="hidden" name="" value="" />
+//     <div class="form-element">
+//         <label class="form-element__label" for="user_email">Email</label>
+//         <div class="form-element__control">
+//             <input autofocus="autofocus" placeholder="email@sendero.com" type="email" value="" name="user[email]" id="user_email" />
+//         </div>
+//     </div>
+//     <div class="form-element">
+//         <label class="form-element__label" for="user_password">Password</label>
+//         <div class="form-element__control">
+//             <input autocomplete="off" placeholder="password" type="password" name="user[password]" id="user_password" />
+//         </div>
+//     </div>
+//     <div class="form-element">
+//         <span class="checkbox">
+//             <input name="checkbox" type="hidden" value="0"/>
+//             <input class="checkbox__field" id="checkbox--remember" name="checkbox" type="checkbox" value="1" />
+//             <label class="checkbox__label" for="checkbox--remember">Remember me</label>
+//           </span>
+//     </div>
+//     <div class="form-element">
+//         <input type="submit" name="commit" value="Log in" class="btn--fit" />
+//     </div>
+// </form>
+// <hr/>
+// <div class="forgot-password text-align--center margin-bottom--small">
+//  <a href="#">Forgot Password?</a>
+// </div>
+//
+// Styleguide 3.1.1
+
+.login-tab {
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &__link {
+        color: $color--grey;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color--grey--dark;
+        }
+
+        &.is-active {
+            color: $color--black;
+            border-bottom: ($border--width * 2) solid $color--theme-orange;
+        }
+    }
+}
