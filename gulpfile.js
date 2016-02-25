@@ -15,14 +15,15 @@ var uglify = require('gulp-uglify');
 var image = require('gulp-image');
 
 // Paths
-var outputPath = '../assets/';
+var outputPath = 'app/assets/';
 var outputPathImages = outputPath + 'images/';
 var outputPathStylesheets = outputPath + 'stylesheets/';
 var outputPathJavascripts = outputPath + 'javascripts/';
-var inputPathImages = 'images/';
-var inputPathStylesheets = 'stylesheets/';
-var inputPathJavascripts = 'javascripts/';
 var outputPathStyleguide = outputPath + 'styleguide';
+var inputPath = 'src/';
+var inputPathImages = inputPath + 'images/';
+var inputPathStylesheets = inputPath + 'stylesheets/';
+var inputPathJavascripts = inputPath + 'javascripts/';
 
 // Browser definitions for autoprefixer
 var autoprefixerOptions = {
@@ -37,7 +38,7 @@ gulp.task('serve', ['clean', 'compile-css', 'compile-javascript', 'move-images',
     });
 
     gulp.watch(inputPathStylesheets + "**/*.scss", ['compile-css']);
-    gulp.watch(inputPathJavascripts + "**/*.js", ['compile-javascript']);
+    // gulp.watch(inputPathJavascripts + "**/*.js", ['compile-javascript']);
     gulp.watch(inputPathImages + "**/*", ['move-images']);
 });
 
@@ -122,7 +123,7 @@ gulp.task('build-images', function() {
 gulp.task('clean', function () {
   return del.sync([
     outputPathImages + '*',
-    outputPathJavascripts + 'application.js',
+    // outputPathJavascripts + 'application.js',
     outputPathStylesheets + 'application.css'
   ], {force: true});
 });
@@ -164,4 +165,4 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 gulp.task('watch', ['serve']);
 
 // Build Production
-gulp.task('build', ['clean-build', 'build-css', 'build-javascript', 'build-images']);
+gulp.task('build', ['clean-build', 'build-css', 'build-images']);

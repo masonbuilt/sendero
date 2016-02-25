@@ -1,15 +1,15 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:index, :show]
   before_action :require_user_is_owner, only: [:edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
     respond_to do |format|
       format.html
-      format.json { render json: @projects, each_serializer: PartialProjectSerializer }
+      format.json do
+        render json: Project.all, each_serializer: PartialProjectSerializer, root: false
+      end
     end
   end
 

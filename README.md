@@ -45,3 +45,9 @@ Linux only: `sudo apt-get install nfs-kernel-server`
 `vagrant ssh`
 
 `bundle exec rails s` - This will start the server and you can access the application [locally](http://local.sendero.com)
+
+## Gulp
+
+Compile all `.js.jsx` files into `application.js` with `gulp` or `gulp development`
+
+Reset the `application.js` file with `gulp reset-javascript`

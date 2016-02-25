@@ -1,9 +1,18 @@
-class PartialProjectSerializer < ActiveModel::Serializer
-  attributes  :id,
-              :status,
-              :user,
-              :route,
-              :grade
+class PartialProjectSerializer < GenericSerializer
+  
+  class << self
+    def original_attributes
+      [:id, :status, :user, :route, :grade]
+    end
+
+    def addons
+      { 
+        "user" => "string",
+        "route" => "string",
+        "grade" => "string"
+      }
+    end
+  end
 
   private
 

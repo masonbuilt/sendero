@@ -44,12 +44,15 @@ gem 'state_machine'
 gem 'configreader'
 gem 'pg'
 
-gem 'react-rails', '~> 1.6.0'
+gem 'react-rails', "~> 1.4.0"
+gem 'react-router-rails'
 gem 'execjs'
 gem 'node'
 gem 'active_model_serializers'
 
 gem 'pry'
+gem 'factory_girl_rails', require: false
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

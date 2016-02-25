@@ -6,9 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
-app/src/bower_components
-app/src/node_modules
-app/assets/styleguide/
+bower_components
+node_modules
+styleguide/
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -25,3 +25,7 @@ app/assets/styleguide/
 config/secrets.yml
 config/site_production.yml
 config/database.yml
+
+app/assets/javascripts/react-bundle.js
+app/assets/javascripts/react-bundle.js.map
+app/assets/stylesheets/application.css
