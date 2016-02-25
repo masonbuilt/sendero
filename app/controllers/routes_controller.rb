@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.all.map {|r| PartialRouteSerializer.new(r, root: false)}
+    @routes = Route.includes(:grade).all.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
       format.html
       format.json { render json: @routes, root: false }
