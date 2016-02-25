@@ -1,3 +1,10 @@
+# This file is designed to return the DATA TYPES
+# associated with all keys of a generic resource (e.g. a Project)
+
+# Why?  I think it'll let us format data a little better on the front-end down the road
+# if we know what data types are being returned or are desired.
+# Such as generating generic forms for a new resource
+
 # JSONManifest.produce(User, :id, :first_name)
 
 # {

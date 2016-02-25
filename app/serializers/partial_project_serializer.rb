@@ -1,20 +1,20 @@
-class PartialProjectSerializer < ActiveModel::Serializer
+class PartialProjectSerializer < GenericSerializer
   
-  ATTRIBUTES = [:id, :status, :user, :route, :grade] # Order sensitive
-  ADDONS = { # Not stored in this table
-            "user" => "character varying",
-            "route" => "character varying",
-            "grade" => "character varying"
-          }
-
   class << self
+    def original_attributes
+      [:id, :status, :user, :route, :grade]
+    end
 
-    def json_manifest
-      JSONManifest.produce(Project, *ATTRIBUTES).merge(ADDONS)
+    def addons
+      { 
+        "user" => "string",
+        "route" => "string",
+        "grade" => "string"
+      }
     end
   end
 
-  attributes *PartialProjectSerializer::ATTRIBUTES
+  attributes *original_attributes
 
   private
 
