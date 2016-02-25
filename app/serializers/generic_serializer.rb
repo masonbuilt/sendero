@@ -33,7 +33,7 @@ class GenericSerializer < ActiveModel::Serializer
     end
   end
   
-  attributes *self.attributes
+  attributes *self.original_attributes
 end
 
 # (A)
