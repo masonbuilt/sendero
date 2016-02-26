@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/routes/search", to: "routes#search", as: "routes_search"
+
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   resources :projects
   resources :grades
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   delete "users/:user_id/project/:id" => "users/projects#destroy", as: "destroy_user_project"
   
   root 'main#dashboard'
+
 
   # To develop with a React Router:
   # comment out the above "root 'main#dashboard'"

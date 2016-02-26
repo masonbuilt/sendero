@@ -3,8 +3,6 @@ class RoutesController < ApplicationController
   before_action :require_user, except: [:index, :show]
   before_action :require_user_is_owner, only: [:edit, :update, :destroy]
 
-  # GET /routes
-  # GET /routes.json
   def index
     @routes = Route.includes(:grade).all.map {|r| PartialRouteSerializer.new(r, root: false)}
     respond_to do |format|
@@ -13,8 +11,6 @@ class RoutesController < ApplicationController
     end
   end
 
-  # GET /routes/1
-  # GET /routes/1.json
   def show
     @projects = @route.projects
     @grade    = @route.grade
@@ -25,17 +21,17 @@ class RoutesController < ApplicationController
     end
   end
 
-  # GET /routes/new
+  def search
+    render :json => Route.search(params['term']), root: false
+  end
+
   def new
     @route = Route.new
   end
 
-  # GET /routes/1/edit
   def edit
   end
 
-  # POST /routes
-  # POST /routes.json
   def create
     @route = Route.new(route_params.merge("owner_id" => current_user.id))
     
@@ -50,8 +46,6 @@ class RoutesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /routes/1
-  # PATCH/PUT /routes/1.json
   def update
     respond_to do |format|
       if @route.update(route_params)
@@ -64,8 +58,6 @@ class RoutesController < ApplicationController
     end
   end
 
-  # DELETE /routes/1
-  # DELETE /routes/1.json
   def destroy
     @route.destroy
     respond_to do |format|
