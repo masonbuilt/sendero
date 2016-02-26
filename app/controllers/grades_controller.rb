@@ -4,10 +4,9 @@ class GradesController < ApplicationController
   # GET /grades
   # GET /grades.json
   def index
-    @grades = Grade.all
     respond_to do |format|
       format.html
-      format.json { render json: @grades, each_serializer: PartialGradeSerializer }
+      format.json { render json: Grade.all, each_serializer: PartialGradeSerializer, root: false }
     end
   end
 

@@ -11,7 +11,7 @@ var GradeSelect = React.createClass({
   componentDidMount: function() {
     this.serverRequest = $.get("/grades.json", function (result) {
       this.setState({
-        data: result
+        data: {grades: result}
       });
     }.bind(this));
   },
