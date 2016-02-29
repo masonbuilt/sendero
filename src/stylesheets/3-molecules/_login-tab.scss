@@ -1,0 +1,33 @@
+// Login Tab
+//
+// markup:
+// <ul class="list--horiz margin-bottom--large margin-top login-tab">
+//     <li class="list--horiz__item is-current login-tab__item">
+//         <a href="" class="login-tab__link is-active">Log In</a>
+//     </li>
+//     <li class="list--horiz__item login-tab__item">
+//         <a href="" class="login-tab__link">Sign Up</a>
+//     </li>
+// </ul>
+//
+// Styleguide 2.2.2
+
+.login-tab {
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &__link {
+        color: $color--grey;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color--grey--dark;
+        }
+
+        &.is-active {
+            color: $color--black;
+            border-bottom: ($border--width * 2) solid $color--theme-orange;
+        }
+    }
+}

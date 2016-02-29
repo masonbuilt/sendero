@@ -1,12 +1,12 @@
-// Login
+// Signup
 //
 // markup:
 // <ul class="list--horiz margin-bottom--large margin-top login-tab">
 //     <li class="list--horiz__item is-current login-tab__item">
-//         <a href="" class="login-tab__link is-active">Log In</a>
+//         <a href="" class="login-tab__link">Log In</a>
 //     </li>
 //     <li class="list--horiz__item login-tab__item">
-//         <a href="" class="login-tab__link">Sign Up</a>
+//         <a href="" class="login-tab__link is-active">Sign Up</a>
 //     </li>
 // </ul>
 // <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post">
@@ -40,4 +40,4 @@
 //  <a href="#">Forgot Password?</a>
 // </div>
 //
-// Styleguide 3.1.1
+// Styleguide 3.1.2
