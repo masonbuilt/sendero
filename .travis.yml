@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - "2.1.2"
+
+env: TEST_ENV=travis
+
+services:
+  - redis-server
+
+before_script: cp config/database.yml.example config/database.yml; cp config/secrets.yml.example config/secrets.yml
+script: bundle exec rspec spec
+bundler_args: --without production
