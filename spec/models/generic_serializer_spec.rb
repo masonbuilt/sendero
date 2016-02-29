@@ -85,7 +85,7 @@ RSpec.describe GenericSerializer do
       it "should give an error if #self.addons not implemented" do
         expect do
           MissingAddonsPartialRouteSerializer.json_manifest
-        end.to raise_error("You must implement addons on MissingAddonsPartialRouteSerializer, with all attributes not on MissingAddonsPartialRouteSerializer's table, in order.  See /home/michael/Sites/sendero/app/serializers/generic_serializer.rb for documentation.")
+        end.to raise_error(StandardError, "You must implement addons on MissingAddonsPartialRouteSerializer, with all attributes not on MissingAddonsPartialRouteSerializer's table, in order.  See /home/michael/Sites/sendero/app/serializers/generic_serializer.rb for documentation.")
       end
     end
   end
