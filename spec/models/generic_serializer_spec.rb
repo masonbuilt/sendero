@@ -86,9 +86,9 @@ RSpec.describe GenericSerializer do
         begin
           MissingAddonsPartialRouteSerializer.json_manifest
         rescue => e
-          expect(e.message).to eq("You must implement addons on MissingAddonsPartialRouteSerializer, with all attributes not on MissingAddonsPartialRouteSerializer's table, in order.  See /home/michael/Sites/sendero/app/serializers/generic_serializer.rb for documentation.")
-        end
+          expect(e.message).to match(/You must implement addons on MissingAddonsPartialRouteSerializer, with all attributes not on MissingAddonsPartialRouteSerializer's table, in order.  See .*\/app\/serializers\/generic_serializer.rb for documentation./)
       end
+    end
     end
   end
 end
