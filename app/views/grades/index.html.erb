@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<%= react_component 'GenericResourceList', url: "/grades", pollInterval: 5000, data: PartialGradeSerializer.json_manifest %>
+<script type="text/babel">
+  ReactDOM.render(
+    <GenericResourceList url="/grades" pollInterval="5000" data="<%= PartialGradeSerializer.json_manifest %>" />,
+    document.getElementById('content')
+  );
+</script>
 
 <%= link_to 'New Grade', new_grade_path %>

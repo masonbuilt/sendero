@@ -44,8 +44,7 @@ gem 'state_machine'
 gem 'configreader'
 gem 'pg'
 
-gem 'react-rails', "~> 1.4.0"
-gem 'react-router-rails'
+gem 'react-rails', "~> 1.4.0" # Keep this in here until you can load React in the asset compilation pipeline
 gem 'execjs'
 gem 'node'
 gem 'active_model_serializers'

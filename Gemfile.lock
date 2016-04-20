@@ -172,9 +172,6 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
-    react-router-rails (0.13.3.1)
-      rails (>= 3.1)
-      react-rails (>= 0.12)
     redis (3.2.2)
     ref (2.0.0)
     responders (2.1.1)
@@ -283,7 +280,6 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rake
   react-rails (~> 1.4.0)
-  react-router-rails
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

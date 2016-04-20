@@ -1,3 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<%= react_component "GenericResourceList", url: "/projects", pollInterval: 5000, data: PartialProjectSerializer.json_manifest %>
+<script type="text/babel">
+  ReactDOM.render(
+    <GenericResourceList url="/projects" pollInterval="5000" data="<%= PartialGradeSerializer.json_manifest %>" />,
+    document.getElementById('content')
+  );
+</script>
