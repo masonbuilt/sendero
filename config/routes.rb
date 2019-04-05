@@ -26,11 +26,4 @@ Rails.application.routes.draw do
   root 'main#dashboard'
 
 
-  # To develop with a React Router:
-  # comment out the above "root 'main#dashboard'"
-  # uncomment below:
-
-  # root 'main#landing'
-  # get "/*path" => "main#landing"
-
 end
